@@ -35,3 +35,8 @@ h4 {
   width: 85%;
   height: 3.5rem;
 }
+
+/* --------------------------- Registration form ---------------------- */
+.registration-form-error {
+	color: red;
+}

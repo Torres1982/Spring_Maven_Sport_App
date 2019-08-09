@@ -1,10 +1,15 @@
 package com.torres.model;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import org.springframework.stereotype.Component;
 
 @Component("footballer")
 public class Footballer {
 	private String firstName;
+	@NotNull(message="Last Name is Required!")
+	@Size(min=2, message="Last Name must be at least 2 Characters!")
 	private String lastName;
 	private String club;
 	private String country;

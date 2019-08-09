@@ -30,25 +30,29 @@
 				
 				<div class="form-group row">
 					<div class="col-sm-3">
-						<form:input path="lastName" class="registration-input form-control" placeholder="Last Name" required="required" />
+						<form:input path="lastName" class="registration-input form-control" placeholder="Last Name" />
+						<form:errors path="lastName" cssClass="registration-form-error" />
 					</div>
 				</div>
 				
 				<div class="form-group row">
 					<div class="col-sm-3">
-						<form:input path="club" class="registration-input form-control" placeholder="Football Club" required="required" />
+						<form:input path="club" class="registration-input form-control" placeholder="Football Club" />
+						<form:errors path="club" cssClass="registration-form-error" />
 					</div>
 				</div>
 				
 				<div class="form-group row">
 					<div class="col-sm-3">
-						<form:input path="country" class="registration-input form-control" placeholder="Nationality" required="required" />
+						<form:input path="country" class="registration-input form-control" placeholder="Nationality" />
+						<form:errors path="country" cssClass="registration-form-error" />
 					</div>
 				</div>
 				
 				<div class="form-group row">
 					<div class="col-sm-3">
-						<form:input type="date" path="dob" class="registration-input form-control" required="required" />
+						<form:input type="date" path="dob" class="registration-input form-control" />
+						<form:errors path="dob" cssClass="registration-form-error" />
 					</div>
 				</div>
 			
