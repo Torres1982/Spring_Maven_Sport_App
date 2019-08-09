@@ -26,7 +26,7 @@
 			<a href="home">Home Page</a>
 			
 			<div id="footer" class="text-center">
-				Artur Sukiennik | &copy; Copyright | Wipro Limited
+				Artur Sukiennik | &copy;opyright | Wipro Limited | 2019
 			</div>
 		</div>
 	</body>

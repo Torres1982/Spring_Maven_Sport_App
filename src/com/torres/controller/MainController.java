@@ -22,7 +22,7 @@ public class MainController {
 	
 	@RequestMapping("/processRegistrationForm")
 	public String processRegistrationForm(@ModelAttribute("footballer") Footballer footballer) {
-		System.out.println("New Footballer Registered: " + footballer.getFirstName() + " " + footballer.getLastName());
+		System.out.println("New Footballer Registered - Success: " + footballer.getFirstName() + " " + footballer.getLastName());
 		return "confirmation";
 	}
 }

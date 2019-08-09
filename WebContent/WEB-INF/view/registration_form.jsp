@@ -52,13 +52,13 @@
 					</div>
 				</div>
 			
-				<input type="submit" id="footballer-registration-button" class="btn btn-danger btn-sm" value="Register Footballer" />
+				<input type="submit" id="footballer-registration-button" class="btn btn-warning btn-sm" value="Register Footballer" />
 			</form:form>
 			
 			<a href="home">Home Page</a>
 			
 			<div id="footer" class="text-center">
-				Artur Sukiennik | &copy; Copyright | Wipro Limited
+				Artur Sukiennik | &copy;opyright | Wipro Limited | 2019
 			</div>
 		</div>
 	</body>
