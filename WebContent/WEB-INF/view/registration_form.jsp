@@ -23,55 +23,85 @@
 
 			<form:form action="processRegistrationForm" method="POST" modelAttribute="footballer" class="form-horizontal">
 				<div class="form-group row">
-					<div class="col-sm-4">
+					<div class="col-sm-7">
 						<form:input path="firstName" class="registration-input form-control" placeholder="First Name" />
 					</div>
 				</div>
 				
 				<div class="form-group row">
-					<div class="col-sm-4">
+					<div class="col-sm-7">
 						<form:input path="lastName" class="registration-input form-control" placeholder="Last Name" />
 					</div>
-					<div class="col-sm-4">
+					<div class="col-sm-5">
 						<form:errors path="lastName" cssClass="registration-form-error" />
 					</div>
 				</div>
 				
 				<div class="form-group row">
-					<div class="col-sm-4">
+					<div class="col-sm-7">
 						<form:input path="club" class="registration-input form-control" placeholder="Football Club" />
 					</div>
-					<div class="col-sm-4">
+					<div class="col-sm-5">
 						<form:errors path="club" cssClass="registration-form-error" />
 					</div>
 				</div>
 				
 				<div class="form-group row">
-					<div class="col-sm-4">
+					<div class="col-sm-7">
 						<form:input path="country" class="registration-input form-control" placeholder="Nationality" />
 					</div>
-					<div class="col-sm-4">
+					<div class="col-sm-5">
 						<form:errors path="country" cssClass="registration-form-error" />
 					</div>
 				</div>
 				
 				<div class="form-group row">
-					<div class="col-sm-4">
+					<div class="col-sm-7">
 						<form:input type="date" path="dob" class="registration-input form-control" />	
 					</div>
-					<div class="col-sm-4">
+					<div class="col-sm-5">
 						<form:errors path="dob" cssClass="registration-form-error" />
 					</div>
 				</div>
 				
 				<div class="form-group row">
-					<div class="col-sm-4">
+					<div class="col-sm-7">
 						<form:select path="strength" class="registration-input form-control">
 							<form:options items="${footballer.strengthOptions}" />
 						</form:select>
 					</div>
-					<div class="col-sm-4">
+					<div class="col-sm-5">
 						<form:errors path="strength" cssClass="registration-form-error" />
+					</div>
+				</div>
+				
+				<div class="from-group row">
+					<div class="col-sm-7">
+						GK <form:checkbox path="positions" value="GK" />
+						CB <form:checkbox path="positions" value="CB" />
+						LB <form:checkbox path="positions" value="LB" />
+						RB <form:checkbox path="positions" value="RB" />
+						DM <form:checkbox path="positions" value="DM" />
+						CM <form:checkbox path="positions" value="CM" />
+						LM <form:checkbox path="positions" value="LM" />
+						RM <form:checkbox path="positions" value="RM" />
+						SS <form:checkbox path="positions" value="SS" />
+						LW <form:checkbox path="positions" value="LW" />
+						RW <form:checkbox path="positions" value="RW" />
+						CF <form:checkbox path="positions" value="CF" />
+					</div>
+					<div class="col-sm-5">
+						<form:errors path="positions" cssClass="registration-form-error" />
+					</div>
+				</div>
+				<br>
+				
+				<div class="from-group row">
+					<div class="col-sm-7">
+						<form:input path="rating" class="registration-input form-control" placeholder="Rating [0 - 100]" />
+					</div>
+					<div class="col-sm-5">
+						<form:errors path="rating" cssClass="registration-form-error" />
 					</div>
 				</div>
 			
