@@ -22,6 +22,8 @@
 			
 			<p>${footballer.firstName} ${footballer.lastName} - ${footballer.club} (${footballer.country})</p>
 			<p>Date of Birth: ${footballer.dob}</p>
+			<p>Player Positions: </p>
+			<p>Main Strength: ${footballer.strength}</p>
 			
 			<a href="home">Home Page</a>
 			

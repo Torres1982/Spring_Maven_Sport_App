@@ -38,5 +38,5 @@ h4 {
 
 /* --------------------------- Registration form ---------------------- */
 .registration-form-error {
-	color: red;
+	color: yellow;
 }

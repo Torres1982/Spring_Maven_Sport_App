@@ -23,36 +23,55 @@
 
 			<form:form action="processRegistrationForm" method="POST" modelAttribute="footballer" class="form-horizontal">
 				<div class="form-group row">
-					<div class="col-sm-3">
+					<div class="col-sm-4">
 						<form:input path="firstName" class="registration-input form-control" placeholder="First Name" />
 					</div>
 				</div>
 				
 				<div class="form-group row">
-					<div class="col-sm-3">
+					<div class="col-sm-4">
 						<form:input path="lastName" class="registration-input form-control" placeholder="Last Name" />
+					</div>
+					<div class="col-sm-4">
 						<form:errors path="lastName" cssClass="registration-form-error" />
 					</div>
 				</div>
 				
 				<div class="form-group row">
-					<div class="col-sm-3">
+					<div class="col-sm-4">
 						<form:input path="club" class="registration-input form-control" placeholder="Football Club" />
+					</div>
+					<div class="col-sm-4">
 						<form:errors path="club" cssClass="registration-form-error" />
 					</div>
 				</div>
 				
 				<div class="form-group row">
-					<div class="col-sm-3">
+					<div class="col-sm-4">
 						<form:input path="country" class="registration-input form-control" placeholder="Nationality" />
+					</div>
+					<div class="col-sm-4">
 						<form:errors path="country" cssClass="registration-form-error" />
 					</div>
 				</div>
 				
 				<div class="form-group row">
-					<div class="col-sm-3">
-						<form:input type="date" path="dob" class="registration-input form-control" />
+					<div class="col-sm-4">
+						<form:input type="date" path="dob" class="registration-input form-control" />	
+					</div>
+					<div class="col-sm-4">
 						<form:errors path="dob" cssClass="registration-form-error" />
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<div class="col-sm-4">
+						<form:select path="strength" class="registration-input form-control">
+							<form:options items="${footballer.strengthOptions}" />
+						</form:select>
+					</div>
+					<div class="col-sm-4">
+						<form:errors path="strength" cssClass="registration-form-error" />
 					</div>
 				</div>
 			
