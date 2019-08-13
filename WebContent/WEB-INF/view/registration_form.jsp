@@ -66,7 +66,7 @@
 				
 				<div class="form-group row">
 					<div class="col-sm-7">
-						<form:select path="strength" class="registration-input form-control">
+						<form:select path="strength" id="strength-height-fix" class="registration-input form-control">
 							<form:options items="${footballer.strengthOptions}" />
 						</form:select>
 					</div>
@@ -76,13 +76,15 @@
 				</div>
 				
 				<div class="from-group row">
-					<div class="col-sm-7">
+					<div class="col-sm-7 registration-input-checkboxes">
 						GK <form:checkbox path="positions" value="GK" />
 						CB <form:checkbox path="positions" value="CB" />
 						LB <form:checkbox path="positions" value="LB" />
 						RB <form:checkbox path="positions" value="RB" />
 						DM <form:checkbox path="positions" value="DM" />
 						CM <form:checkbox path="positions" value="CM" />
+					</div>
+					<div class="col-sm-7 registration-input-checkboxes">
 						LM <form:checkbox path="positions" value="LM" />
 						RM <form:checkbox path="positions" value="RM" />
 						SS <form:checkbox path="positions" value="SS" />
@@ -96,12 +98,21 @@
 				</div>
 				<br>
 				
-				<div class="from-group row">
+				<div id="rating-bottom-margin-fix" class="from-group row">
 					<div class="col-sm-7">
 						<form:input path="rating" class="registration-input form-control" placeholder="Rating [0 - 100]" />
 					</div>
 					<div class="col-sm-5">
 						<form:errors path="rating" cssClass="registration-form-error" />
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<div class="col-sm-7">
+						<form:input path="category" class="registration-input form-control" placeholder="Category" />
+					</div>
+					<div class="col-sm-5">
+						<form:errors path="category" cssClass="registration-form-error" />
 					</div>
 				</div>
 			
@@ -110,7 +121,7 @@
 			
 			<a href="home">Home Page</a>
 			
-			<div id="footer" class="text-center">
+			<div class="text-center">
 				Artur Sukiennik | &copy;opyright | Wipro Limited | 2019
 			</div>
 		</div>

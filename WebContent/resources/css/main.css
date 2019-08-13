@@ -17,10 +17,23 @@ h4 {
 /* ----------------- Footballer Registration Form ------------------- */
 .registration-input {
 	width: 250px!important;
+	height: 28px!important;
+}
+
+.registration-input-checkboxes {
+	width: 300px!important;
 }
 
 #footballer-registration-button {
 	margin: 15px 0 15px 0;
+}
+
+#strength-height-fix {
+	height: 36px!important;
+}
+
+#rating-bottom-margin-fix {
+	margin-bottom: 17px;
 }
 
 /* ------------------------- Footer Settings ------------------------- */

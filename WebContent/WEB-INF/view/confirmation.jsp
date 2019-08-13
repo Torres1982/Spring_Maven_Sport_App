@@ -31,6 +31,7 @@
 				</c:forEach>
 			</ul>
 			
+			<p>Category: ${footballer.category}</p>
 			<p>Overall Rating: ${footballer.rating}</p>
 			
 			<a href="home">Home Page</a>

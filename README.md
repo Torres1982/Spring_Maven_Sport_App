@@ -12,3 +12,4 @@
 ### Assessment Description:
 This is my first Spring/Hibernate assessment for learning purpose.
 It's a Simple Football League System.
+- Reading Custom Validation Errors from the .properties file.
