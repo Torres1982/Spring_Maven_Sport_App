@@ -4,7 +4,7 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 public class FootballerCategoryConstraintValidator implements ConstraintValidator<FootballerCategory, String> {
-	private String categoryPrefix;
+	private String [] categoryPrefix;
 	
 	@Override
 	public void initialize(FootballerCategory footballerCategory) {
@@ -13,10 +13,16 @@ public class FootballerCategoryConstraintValidator implements ConstraintValidato
 	
 	@Override
 	public boolean isValid(String category, ConstraintValidatorContext constraintValidatorContext) {
-		boolean result;
+		boolean result = false;
 		
 		if (category != null) {
-			 result = category.startsWith(categoryPrefix);
+			for (String item : categoryPrefix) {
+				result = category.startsWith(item);
+				
+				if (result) {
+					break;
+				}
+			}
 		} else {
 			result = true;
 		}

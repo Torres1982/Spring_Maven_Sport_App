@@ -3,6 +3,10 @@ package com.torres.model;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -14,7 +18,12 @@ import com.torres.util.Constants;
 import com.torres.validation.FootballerCategory;
 
 @Component("footballer")
-public class Footballer {	
+@Entity
+@Table(name = "footballer")
+public class Footballer {
+	@Id
+	@Column(name = "id")
+	private int id;
 	private String firstName;
 	@NotNull(message  = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_NULL)
 	@Size(min = 2, message = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_LENGTH)
@@ -29,15 +38,14 @@ public class Footballer {
 	private String dob;
 	@NotNull(message = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_NULL)
 	private String strength;
-	@NotNull(message = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_NULL)
-	@Size(min = 1, message = "At Least One Checkbox Must Be Selected")
-	private String positions [];
-	
+	@NotNull(message = "Formation Must Be Selected")
+	private String position;
 	@NotNull(message = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_NULL)
 	@Min(value = 0, message = "Must Be Greater Than or Equal To 0")
 	@Max(value = 100, message = "Must Be Less Than or Equal To 100")
 	private Integer rating;
-	@FootballerCategory
+	@NotNull(message = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_NULL)
+	@FootballerCategory(value = {"GK", "DEF", "MID", "ATT"}, message = "Must Start with 'GK' or 'DEF' or 'MID' or 'ATT'")
 	private String category;
 	
 	private LinkedHashMap<String, String> strengthOptions;
@@ -73,8 +81,8 @@ public class Footballer {
 	public String getStrength() {return strength;}
 	public void setStrength(String strength) {this.strength = strength;}
 	public LinkedHashMap<String, String> getStrengthOptions() {return strengthOptions;}
-	public String[] getPositions() {return positions;}
-	public void setPositions(String[] positions) {this.positions = positions;}
+	public String getPosition() {return position;}
+	public void setPositions(String position) {this.position = position;}
 	public Integer getRating() {return rating;}
 	public void setRating(Integer rating) {this.rating = rating;}
 	public String getCategory() {return category;}

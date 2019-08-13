@@ -23,14 +23,7 @@
 			<p>${footballer.firstName} ${footballer.lastName} - ${footballer.club} (${footballer.country})</p>
 			<p>Date of Birth: ${footballer.dob}</p>
 			<p>Main Strength: ${footballer.strength}</p>
-			<p>Player Positions: </p>
-			
-			<ul>
-				<c:forEach var="item" items="${footballer.positions}">
-					<li>${item}</li>
-				</c:forEach>
-			</ul>
-			
+			<p>Main Position: ${footballer.position}</p>			
 			<p>Category: ${footballer.category}</p>
 			<p>Overall Rating: ${footballer.rating}</p>
 			

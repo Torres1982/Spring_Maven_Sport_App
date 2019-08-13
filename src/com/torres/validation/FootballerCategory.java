@@ -12,8 +12,8 @@ import javax.validation.Payload;
 @Target({ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface FootballerCategory {
-	public String value() default "FOOTBALL";
-	public String message() default "Must Start with 'FOOTBALL'";
+	public String [] value() default {"GK"};
+	public String message() default "Must Start with 'GK'";
 	public Class<?>[] groups() default {};
 	public Class<? extends Payload>[] payload() default {};
 }

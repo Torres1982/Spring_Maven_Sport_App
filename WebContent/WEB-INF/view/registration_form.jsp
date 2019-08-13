@@ -76,24 +76,14 @@
 				</div>
 				
 				<div class="from-group row">
-					<div class="col-sm-7 registration-input-checkboxes">
-						GK <form:checkbox path="positions" value="GK" />
-						CB <form:checkbox path="positions" value="CB" />
-						LB <form:checkbox path="positions" value="LB" />
-						RB <form:checkbox path="positions" value="RB" />
-						DM <form:checkbox path="positions" value="DM" />
-						CM <form:checkbox path="positions" value="CM" />
-					</div>
-					<div class="col-sm-7 registration-input-checkboxes">
-						LM <form:checkbox path="positions" value="LM" />
-						RM <form:checkbox path="positions" value="RM" />
-						SS <form:checkbox path="positions" value="SS" />
-						LW <form:checkbox path="positions" value="LW" />
-						RW <form:checkbox path="positions" value="RW" />
-						CF <form:checkbox path="positions" value="CF" />
+					<div class="col-sm-7 registration-input-radiobuttons">
+						Goalkeeper <form:radiobutton path="position" value="gk" />
+						Defender <form:radiobutton path="position" value="def" />
+						Midfielder <form:radiobutton path="position" value="mid" />
+						Attacker <form:radiobutton path="position" value="att" />
 					</div>
 					<div class="col-sm-5">
-						<form:errors path="positions" cssClass="registration-form-error" />
+						<form:errors path="position" cssClass="registration-form-error" />
 					</div>
 				</div>
 				<br>
