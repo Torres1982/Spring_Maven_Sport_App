@@ -18,20 +18,22 @@
 	<!-- Support for Component Scanning -->
 	<context:component-scan base-package="com.torres" />
 	<!-- Support for Conversion, Formatting and Validation -->
-	<mvc:annotation-driven/>
+	<mvc:annotation-driven />
 	<!-- Support for Mapping CSS, JS and images -->
-	<mvc:resources mapping="/resources/**" location="/resources/"></mvc:resources>
-	<!-- Support for Loading the properties file
-	<context:property-placeholder location="classpath:../football.properties" />
-	
-	<util:properties id="advantageOptions" location="classpath:../advantages.properties" />
-	-->
+	<mvc:resources mapping="/resources/**" location="/resources/" />
 	
 	<!-- Spring MVC View Resolver -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/view/" />
 		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	<!-- Overloading Validation Error Messages -->
+	<bean
+		id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames" value="resources/validation_messages" />
 	</bean>
 </beans>
 

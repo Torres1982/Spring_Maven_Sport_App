@@ -19,7 +19,7 @@
 
 	<body>
 		<div class="container page_container">
-			<h4>Footballer Registration</h4>
+			<h4>Player Registration</h4>
 
 			<form:form action="processRegistrationForm" method="POST" modelAttribute="footballer" class="form-horizontal">
 				<div class="form-group row">

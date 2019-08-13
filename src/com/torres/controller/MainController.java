@@ -37,6 +37,7 @@ public class MainController {
 	public String processRegistrationForm(@Valid @ModelAttribute("footballer") Footballer footballer, BindingResult result) {
 		if (result.hasErrors()) {
 			System.out.println("Some Required Fields are Left Blank!");
+			System.out.println("Binding Result: " + result);
 			return "registration_form";
 		} else {
 			System.out.println("New Footballer Registered - Success: " + footballer.getFirstName() + " " + footballer.getLastName());
