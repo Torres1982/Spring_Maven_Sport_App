@@ -1,10 +1,11 @@
 package com.torres.model;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
@@ -20,8 +21,10 @@ import com.torres.validation.FootballerCategory;
 @Component("footballer")
 @Entity
 @Table(name = "footballer")
-public class Footballer {
+public class Footballer implements Serializable {
+	private static final long serialVersionUID = 1L;
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
 	@Column(name = "first_name")
@@ -56,26 +59,21 @@ public class Footballer {
 	@FootballerCategory(value = {"GK", "DEF", "MID", "ATT"}, message = "Must Start with 'GK' or 'DEF' or 'MID' or 'ATT'")
 	@Column(name = "category")
 	private String category;
+		
+	// Default Constructor
+	public Footballer() {}
 	
-	// Strength Options for a Drop-Down Selection
-	private LinkedHashMap<String, String> strengthOptions;
-	private ArrayList<String> strengthsArray = new ArrayList<String>() {
-		private static final long serialVersionUID = 1L; {
-		add("Agility"); add("Balance and Coordination"); add("Ball Possession"); add("Catching Ball"); add("Crossing");
-		add("Dribbling"); add("Finishing"); add("Free Kicks"); add("Heading"); add("Jump"); add("Long Throw");
-		add("Long Passing"); add("Passing"); add("Penalties Saving"); add("Power and Strength"); add("Shot Stopping");
-		add("Speed"); add("Stamina"); add("Tackling");
-	}};
-		
 	// User-Defined Constructor
-	public Footballer() {
-		// Populate Strength Options
-		strengthOptions = new LinkedHashMap<String, String>();
-		strengthOptions.put("", "Select Main Strength:");
-		
-		for (String strength : strengthsArray) {
-			strengthOptions.put(strength, strength);
-		}
+	public Footballer(String firstName, String lastName, String club, String country, String dob, String strength, String position, Integer rating, String category) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.club = club;
+		this.country = country;
+		this.dob = dob;
+		this.strength = strength;
+		this.position = position;
+		this.rating = rating;
+		this.category = category;
 	}
 
 	public int getId() {return id;}
@@ -91,7 +89,6 @@ public class Footballer {
 	public void setDob(String dob) {this.dob = dob;}
 	public String getStrength() {return strength;}
 	public void setStrength(String strength) {this.strength = strength;}
-	public LinkedHashMap<String, String> getStrengthOptions() {return strengthOptions;}
 	public String getPosition() {return position;}
 	public void setPosition(String position) {this.position = position;}
 	public Integer getRating() {return rating;}

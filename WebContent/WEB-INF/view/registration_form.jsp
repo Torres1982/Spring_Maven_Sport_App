@@ -67,7 +67,7 @@
 				<div class="form-group row">
 					<div class="col-sm-7">
 						<form:select path="strength" id="strength-height-fix" class="registration-input form-control">
-							<form:options items="${footballer.strengthOptions}" />
+							<form:options items="${strengthSelection}" />
 						</form:select>
 					</div>
 					<div class="col-sm-5">
