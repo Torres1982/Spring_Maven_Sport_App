@@ -16,3 +16,5 @@ It's a Simple Football League System.
 - Validation Annotations updated.
 - Constraint Validator added for Custom Annotation (footballer category - prefixes).
 - Hibernate configuration file for JDBC dB settings added.
+- Created a separate package for Db Operations and a new class for Footballer DB Operations.
+- Reading all Footballers (session query) created/updated successfully.
