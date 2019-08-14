@@ -20,7 +20,7 @@
 		<div class="container page_container">
 			<h4>Football - Home Page</h4>
 			
-			<a href="showRegistrationForm">Registration Form</a>
+			<a href="showRegistrationForm" class="link-text">Registration Form</a>
 
 			<div id="footer" class="text-center">
 				Artur Sukiennik | &copy;opyright | Wipro Limited | 2019

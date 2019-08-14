@@ -48,6 +48,7 @@ public class Footballer {
 	@FootballerCategory(value = {"GK", "DEF", "MID", "ATT"}, message = "Must Start with 'GK' or 'DEF' or 'MID' or 'ATT'")
 	private String category;
 	
+	// Strength Options for a Drop-Down Selection
 	private LinkedHashMap<String, String> strengthOptions;
 	private ArrayList<String> strengthsArray = new ArrayList<String>() {
 		private static final long serialVersionUID = 1L; {
@@ -56,7 +57,7 @@ public class Footballer {
 		add("Long Passing"); add("Passing"); add("Penalties Saving"); add("Power and Strength"); add("Shot Stopping");
 		add("Speed"); add("Stamina"); add("Tackling");
 	}};
-	
+		
 	// User-Defined Constructor
 	public Footballer() {
 		// Populate Strength Options
@@ -82,7 +83,7 @@ public class Footballer {
 	public void setStrength(String strength) {this.strength = strength;}
 	public LinkedHashMap<String, String> getStrengthOptions() {return strengthOptions;}
 	public String getPosition() {return position;}
-	public void setPositions(String position) {this.position = position;}
+	public void setPosition(String position) {this.position = position;}
 	public Integer getRating() {return rating;}
 	public void setRating(Integer rating) {this.rating = rating;}
 	public String getCategory() {return category;}

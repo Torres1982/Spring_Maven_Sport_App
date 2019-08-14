@@ -1,5 +1,7 @@
 package com.torres.controller;
 
+import java.util.ArrayList;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
@@ -43,5 +45,15 @@ public class MainController {
 			System.out.println("New Footballer Registered - Success: " + footballer.getFirstName() + " " + footballer.getLastName());
 			return "confirmation";
 		}
+	}
+	
+	@ModelAttribute("positionSelection")
+	public ArrayList<String> positionSelection() {
+		ArrayList<String> positionSelection = new ArrayList<String>();
+		positionSelection.add("Goalkeeper");
+		positionSelection.add("Defender");
+		positionSelection.add("Midfielder");
+		positionSelection.add("Attacker");
+		return positionSelection;
 	}
 }

@@ -27,7 +27,7 @@
 			<p>Category: ${footballer.category}</p>
 			<p>Overall Rating: ${footballer.rating}</p>
 			
-			<a href="home">Home Page</a>
+			<a href="home" class="link-text">Home Page</a>
 			
 			<div id="footer" class="text-center">
 				Artur Sukiennik | &copy;opyright | Wipro Limited | 2019

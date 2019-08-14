@@ -77,10 +77,7 @@
 				
 				<div class="from-group row">
 					<div class="col-sm-7 registration-input-radiobuttons">
-						Goalkeeper <form:radiobutton path="position" value="gk" />
-						Defender <form:radiobutton path="position" value="def" />
-						Midfielder <form:radiobutton path="position" value="mid" />
-						Attacker <form:radiobutton path="position" value="att" />
+						<form:radiobuttons path="position" items="${positionSelection}" />
 					</div>
 					<div class="col-sm-5">
 						<form:errors path="position" cssClass="registration-form-error" />
@@ -109,7 +106,7 @@
 				<input type="submit" id="footballer-registration-button" class="btn btn-warning btn-sm" value="Register Footballer" />
 			</form:form>
 			
-			<a href="home">Home Page</a>
+			<a href="home" class="link-text">Home Page</a>
 			
 			<div class="text-center">
 				Artur Sukiennik | &copy;opyright | Wipro Limited | 2019
