@@ -13,3 +13,6 @@
 This is my first Spring/Hibernate assessment for learning purpose.
 It's a Simple Football League System.
 - Reading Custom Validation Errors from the .properties file.
+- Validation Annotations updated.
+- Constraint Validator added for Custom Annotation (footballer category - prefixes).
+- Hibernate configuration file for JDBC dB settings added.

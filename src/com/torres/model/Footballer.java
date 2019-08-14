@@ -24,28 +24,37 @@ public class Footballer {
 	@Id
 	@Column(name = "id")
 	private int id;
+	@Column(name = "first_name")
 	private String firstName;
 	@NotNull(message  = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_NULL)
 	@Size(min = 2, message = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_LENGTH)
+	@Column(name = "last_name")
 	private String lastName;
 	@NotNull(message = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_NULL)
 	@Size(min = 2, message = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_LENGTH)
+	@Column(name = "club")
 	private String club;
 	@NotNull(message = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_NULL)
 	@Size(min = 2, message = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_LENGTH)
+	@Column(name = "country")
 	private String country;
 	@NotNull(message = "Date Must Be Selected")
+	@Column(name = "date_of_birth")
 	private String dob;
 	@NotNull(message = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_NULL)
+	@Column(name = "strength")
 	private String strength;
 	@NotNull(message = "Formation Must Be Selected")
+	@Column(name = "position")
 	private String position;
 	@NotNull(message = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_NULL)
 	@Min(value = 0, message = "Must Be Greater Than or Equal To 0")
 	@Max(value = 100, message = "Must Be Less Than or Equal To 100")
+	@Column(name = "rating")
 	private Integer rating;
 	@NotNull(message = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_NULL)
 	@FootballerCategory(value = {"GK", "DEF", "MID", "ATT"}, message = "Must Start with 'GK' or 'DEF' or 'MID' or 'ATT'")
+	@Column(name = "category")
 	private String category;
 	
 	// Strength Options for a Drop-Down Selection
@@ -69,6 +78,7 @@ public class Footballer {
 		}
 	}
 
+	public int getId() {return id;}
 	public String getFirstName() {return firstName;}
 	public void setFirstName(String firstName) {this.firstName = firstName;}
 	public String getLastName() {return lastName;}
