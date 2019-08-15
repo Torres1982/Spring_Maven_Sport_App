@@ -9,6 +9,9 @@ import org.hibernate.cfg.Configuration;
 import com.torres.model.Footballer;
 
 public class FootballerDb {
+	private static SessionFactory factory;
+	private static Session session;
+	
 	// Build the Spring DB Session Factory
 	private static SessionFactory buildFootballerSessionFactory() {
 		return new Configuration()
@@ -19,8 +22,8 @@ public class FootballerDb {
 	
 	// Insert a New Footballer into DB
 	public static void createNewFootballer(Footballer footballer) {
-		SessionFactory factory = buildFootballerSessionFactory();
-		Session session = factory.getCurrentSession();
+		factory = buildFootballerSessionFactory();
+		session = factory.getCurrentSession();
 
 		try {
 			System.out.println("Creating a new Footballer ...");
@@ -36,8 +39,8 @@ public class FootballerDb {
 	
 	// Retrieve all Footballers
 	public static void retrieveAllFootballers() {
-		SessionFactory factory = buildFootballerSessionFactory();
-		Session session = factory.getCurrentSession();
+		factory = buildFootballerSessionFactory();
+		session = factory.getCurrentSession();
 		
 		try {
 			System.out.println("Retrieving Footballers ...");

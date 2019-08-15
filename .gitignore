@@ -2,4 +2,4 @@
 *.class
 *.git
 /build
-REAMDE.md
+hibernate.cfg.xml

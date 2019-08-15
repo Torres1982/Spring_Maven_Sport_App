@@ -48,7 +48,7 @@ public class MainController {
 		} else {
 			FootballerDb.createNewFootballer(footballer);					
 			System.out.println("New Footballer Registered Successfully! Id: " + footballer.getId() + " " + footballer.getFirstName() + " " + footballer.getLastName());
-	FootballerDb.retrieveAllFootballers();
+
 			return "confirmation";
 		}
 	}
