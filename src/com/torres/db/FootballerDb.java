@@ -38,7 +38,7 @@ public class FootballerDb {
 	}
 	
 	// Retrieve all Footballers
-	public static void retrieveAllFootballers() {
+	public static List<Footballer> retrieveAllFootballersFromDb() {
 		factory = buildFootballerSessionFactory();
 		session = factory.getCurrentSession();
 		
@@ -49,10 +49,10 @@ public class FootballerDb {
 			@SuppressWarnings("unchecked")
 			List<Footballer> footballersList = session.createQuery("from Footballer").getResultList();
 			
-			for (Footballer footballer: footballersList) {
-				//TODO Replace this with Display in the jsp page
-				System.out.println(footballer);
-			}
+//			for (Footballer footballer: footballersList) {
+//				System.out.println(footballer);
+//			}
+			return footballersList;
 		} finally {
 			factory.close();
 		}

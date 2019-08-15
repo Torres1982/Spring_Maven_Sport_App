@@ -20,7 +20,7 @@
 		<div class="container page_container">
 			<h4>Registered Players</h4>
 			
-			<p>Testing: ${test}</p>
+			<p>${players}</p>
 			
 			<a href="home" class="link-text">Home Page</a>
 			

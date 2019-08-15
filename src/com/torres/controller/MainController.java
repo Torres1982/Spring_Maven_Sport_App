@@ -2,6 +2,7 @@ package com.torres.controller;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -56,7 +57,8 @@ public class MainController {
 	
 	@RequestMapping("/showAllPlayers")
 	public String showAllRegisteredPlayers(ModelMap model) {
-		model.addAttribute("test", "Testing Model Map");
+		List<Footballer> listOfFootballersFromDb = FootballerDb.retrieveAllFootballersFromDb();
+		model.addAttribute("players", listOfFootballersFromDb);
 		
 		return "players";
 	}
