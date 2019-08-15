@@ -20,6 +20,8 @@
 		<div class="container page_container">
 			<h4>Home Page</h4>
 			
+			<p>Date: ${todayDate}</p>
+			
 			<div>
 				<a href="showRegistrationForm" class="link-text">Registration Form</a>
 			</div>

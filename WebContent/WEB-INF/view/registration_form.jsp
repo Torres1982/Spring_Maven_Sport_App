@@ -108,7 +108,7 @@
 			
 			<a href="home" class="link-text">Home Page</a>
 			
-			<div class="text-center">
+			<div class="text-center footer">
 				Artur Sukiennik | &copy;opyright | Wipro Limited | 2019
 			</div>
 		</div>

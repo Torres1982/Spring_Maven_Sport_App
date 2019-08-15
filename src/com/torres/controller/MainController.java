@@ -1,6 +1,8 @@
 package com.torres.controller;
 
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.torres.db.FootballerDb;
 import com.torres.model.Footballer;
+import com.torres.util.DateUtility;
 
 @Controller
 public class MainController {	
@@ -29,7 +32,9 @@ public class MainController {
 	}
 	
 	@RequestMapping({"/", "/home"})
-	public String showIndexPage( ) {
+	public String showIndexPage(ModelMap model) {
+		model.addAttribute("todayDate", DateUtility.convertDateToStringByDate(new Date()));
+		
 		return "home";
 	}
 	
@@ -56,8 +61,8 @@ public class MainController {
 	}
 	
 	@RequestMapping("/showAllPlayers")
-	public String showAllRegisteredPlayers(ModelMap model) {
-		List<Footballer> listOfFootballersFromDb = FootballerDb.retrieveAllFootballersFromDb();
+	public String showAllRegisteredPlayers(ModelMap model) throws ParseException {
+		List<Footballer> listOfFootballersFromDb = FootballerDb.retrieveAllFootballersFromDb();		
 		model.addAttribute("players", listOfFootballersFromDb);
 		
 		return "players";

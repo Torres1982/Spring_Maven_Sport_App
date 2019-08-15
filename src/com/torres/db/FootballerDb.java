@@ -45,13 +45,9 @@ public class FootballerDb {
 		try {
 			System.out.println("Retrieving Footballers ...");
 			session.beginTransaction();
-			
 			@SuppressWarnings("unchecked")
 			List<Footballer> footballersList = session.createQuery("from Footballer").getResultList();
 			
-//			for (Footballer footballer: footballersList) {
-//				System.out.println(footballer);
-//			}
 			return footballersList;
 		} finally {
 			factory.close();

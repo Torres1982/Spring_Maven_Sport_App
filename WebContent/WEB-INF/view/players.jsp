@@ -20,11 +20,24 @@
 		<div class="container page_container">
 			<h4>Registered Players</h4>
 			
-			<p>${players}</p>
+			<c:forEach var="item" items="${players}">
+				<div class="row">
+					<p>${item.id}</p>
+					<p>${item.firstName}</p>
+					<p>${item.lastName}</p>
+					<p>${item.club}</p>
+					<p>${item.country}</p>
+					<p>${item.dob}</p>
+					<p>${item.strength}</p>
+					<p>${item.position}</p>
+					<p>${item.rating}</p>
+					<p>${item.category}</p>
+				</div>
+			</c:forEach>
 			
 			<a href="home" class="link-text">Home Page</a>
 			
-			<div id="footer" class="text-center">
+			<div class="text-center footer">
 				Artur Sukiennik | &copy;opyright | Wipro Limited | 2019
 			</div>
 		</div>
