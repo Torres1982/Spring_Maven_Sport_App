@@ -18,14 +18,11 @@
 	
 	<body>
 		<div class="container page_container">
-			<h4>Home Page</h4>
+			<h4>Registered Players</h4>
 			
-			<div>
-				<a href="showRegistrationForm" class="link-text">Registration Form</a>
-			</div>
-			<div>
-				<a href="showAllPlayers" class="link-text">Show All Players</a>
-			</div>
+			<p>Testing: ${test}</p>
+			
+			<a href="home" class="link-text">Home Page</a>
 			
 			<div id="footer" class="text-center">
 				Artur Sukiennik | &copy;opyright | Wipro Limited | 2019

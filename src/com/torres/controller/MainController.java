@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -51,6 +52,13 @@ public class MainController {
 
 			return "confirmation";
 		}
+	}
+	
+	@RequestMapping("/showAllPlayers")
+	public String showAllRegisteredPlayers(ModelMap model) {
+		model.addAttribute("test", "Testing Model Map");
+		
+		return "players";
 	}
 	
 	@ModelAttribute("positionSelection")
