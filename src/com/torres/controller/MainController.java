@@ -64,6 +64,7 @@ public class MainController {
 	public String showAllRegisteredPlayers(ModelMap model) throws ParseException {
 		List<Footballer> listOfFootballersFromDb = FootballerDb.retrieveAllFootballersFromDb();		
 		model.addAttribute("players", listOfFootballersFromDb);
+		//model.addAttribute("headers", showAllPlayersTableHeaders());
 		
 		return "players";
 	}
@@ -78,7 +79,7 @@ public class MainController {
 		
 		return positionSelection;
 	}
-	
+		
 	@ModelAttribute("strengthSelection")
 	public LinkedHashMap<String, String> strengthOptions() {
 		LinkedHashMap<String, String> strengthOptions;
@@ -101,6 +102,22 @@ public class MainController {
 	}
 }
 
+
+// Create an Array List with the Headers for the Players
+//public ArrayList<String> showAllPlayersTableHeaders() {
+//	ArrayList<String> tableHeaders = new ArrayList<String>();
+//	tableHeaders.add("Name");
+//	tableHeaders.add("Surname");
+//	tableHeaders.add("Club");
+//	tableHeaders.add("Country");
+//	tableHeaders.add("DOB");
+//	tableHeaders.add("Strength");
+//	tableHeaders.add("Position");
+//	tableHeaders.add("Rating");
+//	tableHeaders.add("Category");
+//	
+//	return tableHeaders;
+//}
 
 
 

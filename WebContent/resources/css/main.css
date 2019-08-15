@@ -63,7 +63,28 @@ input[type="radio"] {
 	margin-top: 2rem;
 }
 
-/* --------------------------- Registration form ---------------------- */
+/* --------------------------- Registration Form ---------------------- */
 .registration-form-error {
 	color: yellow;
 }
+
+/* --------------------------- Registration Table ---------------------- */
+table th,
+table td {
+	color: white!important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

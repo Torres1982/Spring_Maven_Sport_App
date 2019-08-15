@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,21 +21,47 @@
 		<div class="container page_container">
 			<h4>Registered Players</h4>
 			
-			<c:forEach var="item" items="${players}">
-				<div class="row">
-					<p>${item.id}</p>
-					<p>${item.firstName}</p>
-					<p>${item.lastName}</p>
-					<p>${item.club}</p>
-					<p>${item.country}</p>
-					<p>${item.dob}</p>
-					<p>${item.strength}</p>
-					<p>${item.position}</p>
-					<p>${item.rating}</p>
-					<p>${item.category}</p>
-				</div>
-			</c:forEach>
-			
+			<c:choose>
+				<c:when test="${fn:length(players) > 0}">
+					<div class="table-responsive">
+						<table class="table table-striped table-bordered table-hover table-sm">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Surname</th>
+									<th>Club</th>
+									<th>Country</th>
+									<th>DOB</th>
+									<th>Strength</th>
+									<th>Position</th>
+									<th>Rating</th>
+									<th>Category</th>
+								</tr>
+							</thead>
+							
+							<tbody>
+								<c:forEach var="item" items="${players}">
+									<tr>
+										<td>${item.firstName}</td>
+										<td>${item.lastName}</td>
+										<td>${item.club}</td>
+										<td>${item.country}</td>
+										<td>${item.dob}</td>
+										<td>${item.strength}</td>
+										<td>${item.position}</td>
+										<td>${item.rating}</td>
+										<td>${item.category}</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<p>Players List is Empty!</p>
+				</c:otherwise>
+			</c:choose>
+						
 			<a href="home" class="link-text">Home Page</a>
 			
 			<div class="text-center footer">
