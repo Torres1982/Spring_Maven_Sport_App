@@ -1,14 +1,15 @@
 /* ----------------------- General Styling -------------------------- */
 body {
-	background-image: url("images/ball.jpg");
-	background-position: center;
-	background-repeat: no-repeat;
+	background: url("images/ball.jpg") no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
 	background-size: cover;
 }
 
 html, body {
 	height: 100%;
-	color: white!important;
+	color: cyan;
 }
 
 h4 {
@@ -20,7 +21,7 @@ h4 {
 }
 
 a.link-text:hover {
-	color: white;
+	color: cyan;
 }
 
 /* ----------------- Footballer Registration Form ------------------- */
@@ -69,9 +70,14 @@ input[type="radio"] {
 }
 
 /* --------------------------- Registration Table ---------------------- */
-table th,
-table td {
-	color: white!important;
+.table th,
+.table td {
+	color: cyan;
+}
+
+.table tbody tr:hover td {
+	background-color: cyan!important;
+	color: red;
 }
 
 
