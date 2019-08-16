@@ -9,7 +9,7 @@ body {
 
 html, body {
 	height: 100%;
-	color: cyan;
+	color: cyan!important;
 }
 
 h4 {

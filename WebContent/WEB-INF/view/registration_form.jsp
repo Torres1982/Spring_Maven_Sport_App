@@ -9,12 +9,7 @@
 		<title>Registration Form</title>
 		<!-- CSS References -->
 		<link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
-		<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
-		<!-- Java Script References -->
-		<script src="<c:url value="/resources/js/main.js" />"></script>
-    	<script src="<c:url value="/resources/js/jquery-3.4.1.js" />"></script>
-    	<script src="<c:url value="/resources/js/popper.min.js" />"></script>
-    	<script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+		<link href="<c:url value="/resources/css/vendor/bootstrap.min.css" />" rel="stylesheet">
 	</head>
 
 	<body>
@@ -113,4 +108,10 @@
 			</div>
 		</div>
 	</body>
+	
+	<!-- Java Script References -->
+   	<script src="<c:url value="/resources/js/vendor/jquery-3.4.1.js" />"></script>
+   	<script src="<c:url value="/resources/js/vendor/popper.min.js" />"></script>
+   	<script src="<c:url value="/resources/js/vendor/bootstrap.min.js" />"></script>
+   	<script src="<c:url value="/resources/js/main.js" />"></script>
 </html>

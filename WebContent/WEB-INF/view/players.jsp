@@ -9,12 +9,8 @@
 		<title>Football Home Page</title>
 		<!-- CSS References -->
 		<link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
-		<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
-		<!-- Java Script References -->
-		<script src="<c:url value="/resources/js/main.js" />"></script>
-    	<script src="<c:url value="/resources/js/jquery-3.4.1.js" />"></script>
-    	<script src="<c:url value="/resources/js/popper.min.js" />"></script>
-    	<script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+		<link href="<c:url value="/resources/css/vendor/bootstrap.min.css" />" rel="stylesheet">
+		<link href="<c:url value="/resources/css/vendor/data-tables.bootstrap.min.css" />" rel="stylesheet">
 	</head>
 	
 	<body>
@@ -24,7 +20,7 @@
 			<c:choose>
 				<c:when test="${fn:length(players) > 0}">
 					<div class="table-responsive">
-						<table class="table table-striped table-bordered table-hover table-sm">
+						<table id="players-table" class="display table table-striped table-bordered table-hover table-sm">
 							<thead>
 								<tr>
 									<th>Name</th>
@@ -69,4 +65,11 @@
 			</div>
 		</div>
 	</body>
+	
+	<!-- Java Script References -->
+   	<script src="<c:url value="/resources/js/vendor/jquery-3.4.1.js" />"></script>
+   	<script src="<c:url value="/resources/js/vendor/popper.min.js" />"></script>
+   	<script src="<c:url value="/resources/js/vendor/bootstrap.min.js" />"></script>
+   	<script src="<c:url value="/resources/js/vendor/data-tables.bootstrap.min.js" />"></script>
+   	<script src="<c:url value="/resources/js/main.js" />"></script>
 </html>
