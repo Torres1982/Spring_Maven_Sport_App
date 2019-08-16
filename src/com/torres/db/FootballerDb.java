@@ -32,7 +32,10 @@ public class FootballerDb {
 			session.getTransaction().commit();
 			
 			System.out.println("Transaction Committed Successfully!");
+		} catch(Exception e) {
+			System.out.println("Exception has occurred!");
 		} finally {
+			session.close();
 			factory.close();
 		}
 	}
@@ -50,6 +53,7 @@ public class FootballerDb {
 			
 			return footballersList;
 		} finally {
+			session.close();
 			factory.close();
 		}
 	}
