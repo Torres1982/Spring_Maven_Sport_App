@@ -8,9 +8,10 @@
 		<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
 		<title>Football Home Page</title>
 		<!-- CSS References -->
-		<link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
-		<link href="<c:url value="/resources/css/vendor/bootstrap.min.css" />" rel="stylesheet">
-		<link href="<c:url value="/resources/css/vendor/data-tables.bootstrap.min.css" />" rel="stylesheet">
+		<link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">	
+		<link href="<c:url value="/resources/css/vendor/bootstrap.min.css" />" rel="stylesheet">	
+		<link href="<c:url value="/resources/css/vendor/data-tables.bootstrap.min.css" />" rel="stylesheet">	
+		<link href="<c:url value="/resources/css/vendor/responsive.bootstrap.min.css" />" rel="stylesheet">
 	</head>
 	
 	<body>
@@ -20,7 +21,7 @@
 			<c:choose>
 				<c:when test="${fn:length(players) > 0}">
 					<div class="table-responsive">
-						<table id="players-table" class="display table table-striped table-bordered table-hover table-sm">
+						<table id="players-table" class="table table-striped table-bordered table-hover table-sm">
 							<thead>
 								<tr>
 									<th>Name</th>
@@ -69,7 +70,8 @@
 	<!-- Java Script References -->
    	<script src="<c:url value="/resources/js/vendor/jquery-3.4.1.js" />"></script>
    	<script src="<c:url value="/resources/js/vendor/popper.min.js" />"></script>
-   	<script src="<c:url value="/resources/js/vendor/bootstrap.min.js" />"></script>
-   	<script src="<c:url value="/resources/js/vendor/data-tables.bootstrap.min.js" />"></script>
+   	<script src="<c:url value="/resources/js/vendor/bootstrap.min.js" />"></script>	
+   	<script src="<c:url value="/resources/js/vendor/dataTables.bootstrap.min.js" />"></script> 
+   	<script src="<c:url value="/resources/js/vendor/jquery.dataTables.min.js" />"></script>
    	<script src="<c:url value="/resources/js/main.js" />"></script>
 </html>

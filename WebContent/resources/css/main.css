@@ -70,6 +70,10 @@ input[type="radio"] {
 }
 
 /* --------------------------- Registration Table ---------------------- */
+.players-table {
+	width: 100%;	
+}
+
 .table th,
 .table td {
 	color: cyan;
@@ -78,6 +82,28 @@ input[type="radio"] {
 .table tbody tr:hover td {
 	background-color: cyan!important;
 	color: red;
+}
+
+/* --------------------- Override Data Table properties ------------------- */
+.paginate_button {
+    box-sizing: border-box;
+    display: inline-block;
+    min-width: 1.5em;
+    padding: 0.5em 1em;
+    margin-left: 2px;
+    text-align: center;
+    text-decoration: none!important;
+    cursor: pointer;
+    color: cyan!important;
+    border: 1px solid cyan;
+    border-radius: 3px;
+}
+
+.paginate_button.current,
+.paginate_button:hover,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    color: red!important;
+    background-color: cyan;
 }
 
 
