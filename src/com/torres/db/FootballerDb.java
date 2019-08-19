@@ -5,15 +5,21 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.torres.model.Footballer;
 
-public class FootballerDb {
-	private static SessionFactory factory;
-	private static Session session;
+@Repository
+public class FootballerDb implements FootballerInterface {
+	@Autowired
+	private SessionFactory sessionFactory;
+	private Session session;
 	
 	// Build the Spring DB Session Factory
-	private static SessionFactory buildFootballerSessionFactory() {
+	private SessionFactory buildFootballerSessionFactory() {
 		return new Configuration()
 				.configure("hibernate.cfg.xml")
 				.addAnnotatedClass(Footballer.class)
@@ -21,9 +27,9 @@ public class FootballerDb {
 	}
 	
 	// Insert a New Footballer into DB
-	public static void createNewFootballer(Footballer footballer) {
-		factory = buildFootballerSessionFactory();
-		session = factory.getCurrentSession();
+	public void createNewFootballer(Footballer footballer) {
+		sessionFactory = buildFootballerSessionFactory();
+		session = sessionFactory.getCurrentSession();
 
 		try {
 			System.out.println("Creating a new Footballer ...");
@@ -36,25 +42,31 @@ public class FootballerDb {
 			System.out.println("Exception has occurred!");
 		} finally {
 			session.close();
-			factory.close();
+			sessionFactory.close();
 		}
 	}
 	
 	// Retrieve all Footballers
-	public static List<Footballer> retrieveAllFootballersFromDb() {
-		factory = buildFootballerSessionFactory();
-		session = factory.getCurrentSession();
-		
-		try {
-			System.out.println("Retrieving Footballers ...");
-			session.beginTransaction();
-			@SuppressWarnings("unchecked")
-			List<Footballer> footballersList = session.createQuery("from Footballer").getResultList();
-			
-			return footballersList;
-		} finally {
-			session.close();
-			factory.close();
-		}
+	@Override
+	@Transactional
+	public List<Footballer> retrieveAllFootballersFromDb() {
+		session = sessionFactory.getCurrentSession();
+		Query<Footballer> query = session.createQuery("from Footballer", Footballer.class);
+		List<Footballer> footballersList = query.getResultList();
+		return footballersList;
+//		sessionFactory = buildFootballerSessionFactory();
+//		session = sessionFactory.getCurrentSession();
+//		
+//		try {
+//			System.out.println("Retrieving Footballers ...");
+//			session.beginTransaction();
+//			@SuppressWarnings("unchecked")
+//			List<Footballer> footballersList = session.createQuery("from Footballer").getResultList();
+//			
+//			return footballersList;
+//		} finally {
+//			session.close();
+//			sessionFactory.close();
+//		}
 	}
 }

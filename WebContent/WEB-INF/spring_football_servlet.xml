@@ -4,7 +4,8 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:util="http://www.springframework.org/schema/util" 
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans
     	http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -13,7 +14,9 @@
     	http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/util     
-        http://www.springframework.org/schema/util/spring-util.xsd">
+        http://www.springframework.org/schema/util/spring-util.xsd
+    	http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<!-- Support for Component Scanning -->
 	<context:component-scan base-package="com.torres" />
@@ -35,6 +38,49 @@
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames" value="resources/validation_messages" />
 	</bean>
+	
+	 <!-- Define Database DataSource / Connection Pool -->
+	 <!-- Alternative to hibernate.cfg.xml file Settings -->
+	<bean
+		id="myDataSource"
+		class="com.mchange.v2.c3p0.ComboPooledDataSource"
+        destroy-method="close">
+        <property name="driverClass" value="com.mysql.cj.jdbc.Driver" />
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/football?useSSL=false&amp;serverTimezone=UTC" />
+        <property name="user" value="Artur" />
+        <property name="password" value="admin" /> 
+
+        <!-- Connection Pool properties for C3P0 -->
+		<property name="initialPoolSize" value="5"/>
+        <property name="minPoolSize" value="5" />
+        <property name="maxPoolSize" value="20" />
+        <property name="maxIdleTime" value="30000" />
+	</bean>  
+	
+    <!-- Hibernate Session Factory -->
+    <!-- Alternative to hibernate.cfg.xml file Settings -->
+	<bean 
+		id="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="myDataSource" />
+		<property name="packagesToScan" value="com.torres.model" />
+		<property name="hibernateProperties">
+		   <props>
+		      <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+		      <prop key="hibernate.show_sql">true</prop>
+		   </props>
+		</property>
+   </bean>	  
+
+    <!-- Hibernate Transaction Manager -->
+	<bean 
+		id="transactionManager"
+        class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    
+    <!-- Configuration of transactional behaviour based on Annotations -->
+	<tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager" />
 </beans>
 
 

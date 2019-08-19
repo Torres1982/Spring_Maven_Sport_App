@@ -8,6 +8,11 @@
 
 	<absolute-ordering />
 
+  	<welcome-file-list>
+	    <welcome-file>home.jsp</welcome-file>
+	    <welcome-file>home.html</welcome-file>
+  	</welcome-file-list>
+
 	<!-- Spring MVC Dispatcher Servlet -->
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>

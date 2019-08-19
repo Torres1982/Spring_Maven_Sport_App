@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +25,9 @@ import com.torres.util.DateUtility;
 
 @Controller
 public class MainController {	
+	@Autowired
+	private FootballerDb footballerDb;
+	
 	// Removes White Spaces from the String
 	@InitBinder
 	public void initBinder(WebDataBinder dataBinder) {
@@ -53,7 +57,7 @@ public class MainController {
 			
 			return "registration_form";
 		} else {
-			FootballerDb.createNewFootballer(footballer);					
+			footballerDb.createNewFootballer(footballer);					
 			System.out.println("New Footballer Registered Successfully! Id: " + footballer.getId() + " " + footballer.getFirstName() + " " + footballer.getLastName());
 
 			return "confirmation";
@@ -62,9 +66,8 @@ public class MainController {
 	
 	@RequestMapping("/showAllPlayers")
 	public String showAllRegisteredPlayers(ModelMap model) throws ParseException {
-		List<Footballer> listOfFootballersFromDb = FootballerDb.retrieveAllFootballersFromDb();		
+		List<Footballer> listOfFootballersFromDb = footballerDb.retrieveAllFootballersFromDb();		
 		model.addAttribute("players", listOfFootballersFromDb);
-		//model.addAttribute("headers", showAllPlayersTableHeaders());
 		
 		return "players";
 	}
@@ -101,24 +104,6 @@ public class MainController {
 		return strengthOptions;
 	}
 }
-
-
-// Create an Array List with the Headers for the Players
-//public ArrayList<String> showAllPlayersTableHeaders() {
-//	ArrayList<String> tableHeaders = new ArrayList<String>();
-//	tableHeaders.add("Name");
-//	tableHeaders.add("Surname");
-//	tableHeaders.add("Club");
-//	tableHeaders.add("Country");
-//	tableHeaders.add("DOB");
-//	tableHeaders.add("Strength");
-//	tableHeaders.add("Position");
-//	tableHeaders.add("Rating");
-//	tableHeaders.add("Category");
-//	
-//	return tableHeaders;
-//}
-
 
 
 
