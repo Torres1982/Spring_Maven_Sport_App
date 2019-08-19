@@ -52,6 +52,7 @@ public class FootballerDb implements FootballerInterface {
 		session = sessionFactory.getCurrentSession();
 		Query<Footballer> query = session.createQuery("from Footballer", Footballer.class);
 		List<Footballer> footballersList = query.getResultList();
+		
 		return footballersList;
 //		sessionFactory = buildFootballerSessionFactory();
 //		session = sessionFactory.getCurrentSession();
@@ -67,5 +68,14 @@ public class FootballerDb implements FootballerInterface {
 //			session.close();
 //			sessionFactory.close();
 //		}
+	}
+
+	// Retrieve the Footballer by given Footballer ID
+	@Override
+	public Footballer getFootballerById(int id) {
+		session = sessionFactory.getCurrentSession();
+		Footballer footballer = session.get(Footballer.class, id);
+		
+		return footballer;
 	}
 }

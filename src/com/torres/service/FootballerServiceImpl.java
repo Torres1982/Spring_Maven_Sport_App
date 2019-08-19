@@ -26,4 +26,10 @@ public class FootballerServiceImpl implements FootballerService {
 	public void createFootballer(Footballer footballer) {
 		footballerDb.createNewFootballer(footballer);
 	}
+
+	@Override
+	@Transactional
+	public Footballer getFootballer(int id) {
+		return footballerDb.getFootballerById(id);
+	}
 }

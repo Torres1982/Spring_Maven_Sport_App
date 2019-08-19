@@ -40,7 +40,7 @@
 							<tbody>
 								<c:forEach var="item" items="${players}">
 									<!-- Update Link for Each Individual Player -->
-									<c:url var="updatePlayer" value="/footballer/showRegistrationForm">
+									<c:url var="updatePlayer" value="/footballer/showRegistrationFormToUpdate">
 										<c:param  name="footballerId" value="${item.id}" />
 									</c:url>
 									

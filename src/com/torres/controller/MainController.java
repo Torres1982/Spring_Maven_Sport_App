@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.torres.model.Footballer;
 import com.torres.service.FootballerServiceImpl;
@@ -48,6 +49,14 @@ public class MainController {
 	@GetMapping("/showRegistrationForm")
 	public String showRegistrationForm(Model model) {
 		model.addAttribute("footballer", new Footballer());
+		
+		return "registration_form";
+	}
+	
+	@GetMapping("/showRegistrationFormToUpdate")
+	public String showRegistrationFormToUpdate(@RequestParam("footballerId") int id, Model model) {
+		Footballer footballer = footballerService.getFootballer(id);
+		model.addAttribute("footballer", footballer);
 		
 		return "registration_form";
 	}
