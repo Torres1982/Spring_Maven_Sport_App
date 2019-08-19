@@ -24,6 +24,7 @@ import com.torres.model.Footballer;
 import com.torres.util.DateUtility;
 
 @Controller
+@RequestMapping("/footballer")
 public class MainController {	
 	@Autowired
 	private FootballerDb footballerDb;
