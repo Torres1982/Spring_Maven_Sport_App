@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+//import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,31 +18,32 @@ public class FootballerDb implements FootballerInterface {
 	private Session session;
 	
 	// Build the Spring DB Session Factory
-	private SessionFactory buildFootballerSessionFactory() {
-		return new Configuration()
-				.configure("hibernate.cfg.xml")
-				.addAnnotatedClass(Footballer.class)
-				.buildSessionFactory();
-	}
+//	private SessionFactory buildFootballerSessionFactory() {
+//		return new Configuration()
+//				.configure("hibernate.cfg.xml")
+//				.addAnnotatedClass(Footballer.class)
+//				.buildSessionFactory();
+//	}
 	
 	// Insert a New Footballer into DB
+	@Override
 	public void createNewFootballer(Footballer footballer) {
-		sessionFactory = buildFootballerSessionFactory();
+//		sessionFactory = buildFootballerSessionFactory();
 		session = sessionFactory.getCurrentSession();
-
-		try {
-			System.out.println("Creating a new Footballer ...");
-			session.beginTransaction();
-			session.save(footballer);
-			session.getTransaction().commit();
-			
-			System.out.println("Transaction Committed Successfully!");
-		} catch(Exception e) {
-			System.out.println("Exception has occurred!");
-		} finally {
-			session.close();
-			sessionFactory.close();
-		}
+		session.save(footballer);
+//		try {
+//			System.out.println("Creating a new Footballer ...");
+//			session.beginTransaction();
+//			session.save(footballer);
+//			session.getTransaction().commit();
+//			
+//			System.out.println("Transaction Committed Successfully!");
+//		} catch(Exception e) {
+//			System.out.println("Exception has occurred!");
+//		} finally {
+//			session.close();
+//			sessionFactory.close();
+//		}
 	}
 	
 	// Retrieve all Footballers

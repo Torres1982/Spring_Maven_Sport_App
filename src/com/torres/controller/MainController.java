@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.torres.db.FootballerDb;
 import com.torres.model.Footballer;
 import com.torres.service.FootballerServiceImpl;
 import com.torres.util.DateUtility;
@@ -31,10 +30,7 @@ import com.torres.util.DateUtility;
 public class MainController {	
 	@Autowired
 	private FootballerServiceImpl footballerService;
-	
-	@Autowired
-	private FootballerDb footballerDb;
-	
+		
 	// Removes White Spaces from the String
 	@InitBinder
 	public void initBinder(WebDataBinder dataBinder) {
@@ -64,7 +60,7 @@ public class MainController {
 			
 			return "registration_form";
 		} else {
-			footballerDb.createNewFootballer(footballer);					
+			footballerService.createFootballer(footballer);					
 			System.out.println("New Footballer Registered Successfully! Id: " + footballer.getId() + " " + footballer.getFirstName() + " " + footballer.getLastName());
 
 			return "confirmation";

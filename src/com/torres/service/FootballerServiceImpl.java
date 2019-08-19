@@ -20,4 +20,10 @@ public class FootballerServiceImpl implements FootballerService {
 	public List<Footballer> getAllFootballers() {
 		return footballerDb.retrieveAllFootballersFromDb();
 	}
+
+	@Override
+	@Transactional
+	public void createFootballer(Footballer footballer) {
+		footballerDb.createNewFootballer(footballer);
+	}
 }

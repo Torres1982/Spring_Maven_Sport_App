@@ -6,4 +6,5 @@ import com.torres.model.Footballer;
 
 public interface FootballerInterface {
 	public List<Footballer> retrieveAllFootballersFromDb();
+	public void createNewFootballer(Footballer footballer);
 }
