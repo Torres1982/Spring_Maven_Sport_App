@@ -15,8 +15,10 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.torres.db.FootballerDb;
@@ -43,14 +45,14 @@ public class MainController {
 		return "home";
 	}
 	
-	@RequestMapping("/showRegistrationForm")
+	@GetMapping("/showRegistrationForm")
 	public String showRegistrationForm(Model model) {
 		model.addAttribute("footballer", new Footballer());
 		
 		return "registration_form";
 	}
 	
-	@RequestMapping("/processRegistrationForm")
+	@PostMapping("/processRegistrationForm")
 	public String processRegistrationForm(@Valid @ModelAttribute("footballer") Footballer footballer, BindingResult result) {
 		if (result.hasErrors()) {
 			System.out.println("Some Required Fields are Left Blank!");
@@ -65,7 +67,7 @@ public class MainController {
 		}
 	}
 	
-	@RequestMapping("/showAllPlayers")
+	@GetMapping("/showAllPlayers")
 	public String showAllRegisteredPlayers(ModelMap model) throws ParseException {
 		List<Footballer> listOfFootballersFromDb = footballerDb.retrieveAllFootballersFromDb();		
 		model.addAttribute("players", listOfFootballersFromDb);
