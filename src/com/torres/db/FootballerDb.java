@@ -8,7 +8,6 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.torres.model.Footballer;
 
@@ -48,7 +47,6 @@ public class FootballerDb implements FootballerInterface {
 	
 	// Retrieve all Footballers
 	@Override
-	@Transactional
 	public List<Footballer> retrieveAllFootballersFromDb() {
 		session = sessionFactory.getCurrentSession();
 		Query<Footballer> query = session.createQuery("from Footballer", Footballer.class);

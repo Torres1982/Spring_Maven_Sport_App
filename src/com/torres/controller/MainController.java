@@ -23,11 +23,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.torres.db.FootballerDb;
 import com.torres.model.Footballer;
+import com.torres.service.FootballerServiceImpl;
 import com.torres.util.DateUtility;
 
 @Controller
 @RequestMapping("/footballer")
 public class MainController {	
+	@Autowired
+	private FootballerServiceImpl footballerService;
+	
 	@Autowired
 	private FootballerDb footballerDb;
 	
@@ -69,7 +73,7 @@ public class MainController {
 	
 	@GetMapping("/showAllPlayers")
 	public String showAllRegisteredPlayers(ModelMap model) throws ParseException {
-		List<Footballer> listOfFootballersFromDb = footballerDb.retrieveAllFootballersFromDb();		
+		List<Footballer> listOfFootballersFromDb = footballerService.getAllFootballers();		
 		model.addAttribute("players", listOfFootballersFromDb);
 		
 		return "players";
