@@ -32,12 +32,18 @@
 									<th>Strength</th>
 									<th>Position</th>
 									<th>Rating</th>
-									<th>Category</th>
+									<th>Action</th>
+									<!-- <th>Category</th> -->
 								</tr>
 							</thead>
 							
 							<tbody>
 								<c:forEach var="item" items="${players}">
+									<!-- Update Link for Each Individual Player -->
+									<c:url var="updatePlayer" value="/footballer/showRegistrationForm">
+										<c:param  name="footballerId" value="${item.id}" />
+									</c:url>
+									
 									<tr>
 										<td>${item.firstName}</td>
 										<td>${item.lastName}</td>
@@ -47,7 +53,10 @@
 										<td>${item.strength}</td>
 										<td>${item.position}</td>
 										<td>${item.rating}</td>
-										<td>${item.category}</td>
+										<td>
+											<a href="${updatePlayer}">Update</a>
+										</td>
+										<!-- <td>${item.category}</td> -->
 									</tr>
 								</c:forEach>
 							</tbody>
