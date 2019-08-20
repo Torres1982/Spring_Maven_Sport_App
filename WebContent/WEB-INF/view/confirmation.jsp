@@ -13,7 +13,7 @@
 
 	<body>
 		<div class="container page_container">
-			<h4>New Footballer Registered:</h4>
+			<h4>${message}</h4>
 			
 			<p>${footballer.firstName} ${footballer.lastName} - ${footballer.club} (${footballer.country})</p>
 			<p>Date of Birth: ${footballer.dob}</p>

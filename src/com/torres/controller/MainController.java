@@ -63,15 +63,21 @@ public class MainController {
 	}
 	
 	@PostMapping("/processRegistrationForm")
-	public String processRegistrationForm(@Valid @ModelAttribute("footballer") Footballer footballer, BindingResult result) {
+	public String processRegistrationForm(@Valid @ModelAttribute("footballer") Footballer footballer, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			System.out.println("Some Required Fields are Left Blank!");
 			System.out.println("Binding Result: " + result);
 			
 			return "registration_form";
 		} else {
+			if (footballer.getId() == 0) {
+				model.addAttribute("message", "New Footballer Registered:");
+			} else {
+				model.addAttribute("message", "Existing Footballer Updated:");
+			}
+			
 			footballerService.createFootballer(footballer);					
-			System.out.println("New Footballer Registered Successfully! Id: " + footballer.getId() + " " + footballer.getFirstName() + " " + footballer.getLastName());
+			System.out.println("Footballer Saved Successfully! Id: " + footballer.getId() + " " + footballer.getFirstName() + " " + footballer.getLastName());
 
 			return "confirmation";
 			//return "redirect:/footballer/showAllPlayers";

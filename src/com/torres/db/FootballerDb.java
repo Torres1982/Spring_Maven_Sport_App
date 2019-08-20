@@ -30,9 +30,8 @@ public class FootballerDb implements FootballerInterface {
 //		sessionFactory = buildFootballerSessionFactory();
 		Session session = sessionFactory.getCurrentSession();
 		// If it's a new Footballer it will Save, otherwise it will get a Hidden Form Id and Update existing Footballer
-		System.out.println("!!! TESTING UPDATE BEFORE SAVE !!! ID: " + footballer.getId());
 		session.saveOrUpdate(footballer);
-		System.out.println("!!! TESTING UPDATE AFTER SAVE !!! ID: " + footballer.getId());
+		System.out.println("!!! TESTING UPDATE !!! ID: " + footballer.getId());
 //		try {
 //			System.out.println("Creating a new Footballer ...");
 //			session.beginTransaction();
