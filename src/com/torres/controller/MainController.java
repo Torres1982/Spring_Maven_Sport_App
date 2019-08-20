@@ -92,6 +92,14 @@ public class MainController {
 		return "players";
 	}
 	
+	@GetMapping("/deletePlayer")
+	public String deleteFootballer(@RequestParam("footballerId") int id, Model model) {
+		model.addAttribute("deleteMessage", "Footballer with ID " + id + " Successfully Deleted");
+		footballerService.deleteFootballer(id);
+		
+		return "confirmation";
+	}
+	
 	@ModelAttribute("positionSelection")
 	public ArrayList<String> positionSelection() {
 		ArrayList<String> positionSelection = new ArrayList<String>();

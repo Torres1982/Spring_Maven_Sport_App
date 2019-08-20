@@ -44,6 +44,11 @@
 										<c:param  name="footballerId" value="${item.id}" />
 									</c:url>
 									
+									<!-- Delete Link for Each Individual Player -->
+									<c:url var="deletePlayer" value="/footballer/deletePlayer">
+										<c:param  name="footballerId" value="${item.id}" />
+									</c:url>
+									
 									<tr>
 										<td>${item.firstName}</td>
 										<td>${item.lastName}</td>
@@ -54,7 +59,8 @@
 										<td>${item.position}</td>
 										<td>${item.rating}</td>
 										<td>
-											<a href="${updatePlayer}">Update</a>
+											<a href="${updatePlayer}" class="btn btn-warning btn-sm">Update</a>
+											<a href="${deletePlayer}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete ${item.firstName} ${item.lastName}?');">Remove</a>
 										</td>
 										<!-- <td>${item.category}</td> -->
 									</tr>
@@ -63,6 +69,7 @@
 						</table>
 					</div>
 				</c:when>
+				
 				<c:otherwise>
 					<p>Players List is Empty!</p>
 				</c:otherwise>

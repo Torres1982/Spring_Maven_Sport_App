@@ -32,4 +32,10 @@ public class FootballerServiceImpl implements FootballerService {
 	public Footballer getFootballer(int id) {
 		return footballerDb.getFootballerById(id);
 	}
+
+	@Override
+	@Transactional
+	public void deleteFootballer(int id) {
+		footballerDb.deleteExistingFootballer(id);
+	}
 }

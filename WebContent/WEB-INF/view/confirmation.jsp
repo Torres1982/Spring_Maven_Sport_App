@@ -13,14 +13,26 @@
 
 	<body>
 		<div class="container page_container">
-			<h4>${message}</h4>
-			
-			<p>${footballer.firstName} ${footballer.lastName} - ${footballer.club} (${footballer.country})</p>
-			<p>Date of Birth: ${footballer.dob}</p>
-			<p>Main Strength: ${footballer.strength}</p>
-			<p>Main Position: ${footballer.position}</p>			
-			<p>Category: ${footballer.category}</p>
-			<p>Overall Rating: ${footballer.rating}</p>
+			<c:choose>
+				<c:when test="${not empty footballer}">
+					<c:if test="${not empty message}">
+						<h4>${message}</h4>
+					</c:if>
+					
+					<p>${footballer.firstName} ${footballer.lastName} - ${footballer.club} (${footballer.country})</p>
+					<p>Date of Birth: ${footballer.dob}</p>
+					<p>Main Strength: ${footballer.strength}</p>
+					<p>Main Position: ${footballer.position}</p>			
+					<p>Category: ${footballer.category}</p>
+					<p>Overall Rating: ${footballer.rating}</p>
+				</c:when>
+				
+				<c:otherwise>
+					<c:if test="${not empty deleteMessage}">
+						<h4>${deleteMessage}</h4>
+					</c:if>
+				</c:otherwise>
+			</c:choose>
 			
 			<a href="home" class="link-text">Home Page</a>
 			

@@ -102,7 +102,7 @@
 					</div>
 				</div>
 			
-				<input type="submit" id="footballer-registration-button" class="btn btn-warning btn-sm" value="Register Footballer" />
+				<input type="submit" id="footballer-registration-button" class="btn btn-warning btn-sm" value="Save Footballer" />
 			</form:form>
 			
 			<a href="home" class="link-text">Home Page</a>

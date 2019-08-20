@@ -31,6 +31,7 @@ public class FootballerDb implements FootballerInterface {
 		Session session = sessionFactory.getCurrentSession();
 		// If it's a new Footballer it will Save, otherwise it will get a Hidden Form Id and Update existing Footballer
 		session.saveOrUpdate(footballer);
+		
 		System.out.println("!!! TESTING UPDATE !!! ID: " + footballer.getId());
 //		try {
 //			System.out.println("Creating a new Footballer ...");
@@ -78,5 +79,16 @@ public class FootballerDb implements FootballerInterface {
 		Footballer footballer = session.get(Footballer.class, id);
 		
 		return footballer;
+	}
+
+	@Override
+	public void deleteExistingFootballer(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		@SuppressWarnings("rawtypes")
+		Query query = session.createQuery("delete from Footballer where id=:footballerId");
+		query.setParameter("footballerId", id);
+		query.executeUpdate();
+		
+		System.out.println("Footballer Successfully Deleted! ID: " + id);
 	}
 }
