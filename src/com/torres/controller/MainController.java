@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
+//import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,7 +40,7 @@ public class MainController {
 	}
 	
 	@RequestMapping({"/", "/home"})
-	public String showIndexPage(ModelMap model) {
+	public String showIndexPage(Model model) {
 		model.addAttribute("todayDate", DateUtility.convertDateToStringByDate(new Date()));
 		
 		return "home";
@@ -48,7 +48,8 @@ public class MainController {
 	
 	@GetMapping("/showRegistrationForm")
 	public String showRegistrationForm(Model model) {
-		model.addAttribute("footballer", new Footballer());
+		Footballer footballer = new Footballer();
+		model.addAttribute("footballer", footballer);
 		
 		return "registration_form";
 	}
@@ -73,11 +74,12 @@ public class MainController {
 			System.out.println("New Footballer Registered Successfully! Id: " + footballer.getId() + " " + footballer.getFirstName() + " " + footballer.getLastName());
 
 			return "confirmation";
+			//return "redirect:/footballer/showAllPlayers";
 		}
 	}
 	
 	@GetMapping("/showAllPlayers")
-	public String showAllRegisteredPlayers(ModelMap model) throws ParseException {
+	public String showAllRegisteredPlayers(Model model) throws ParseException {
 		List<Footballer> listOfFootballersFromDb = footballerService.getAllFootballers();		
 		model.addAttribute("players", listOfFootballersFromDb);
 		

@@ -15,7 +15,6 @@ import com.torres.model.Footballer;
 public class FootballerDb implements FootballerInterface {
 	@Autowired
 	private SessionFactory sessionFactory;
-	private Session session;
 	
 	// Build the Spring DB Session Factory
 //	private SessionFactory buildFootballerSessionFactory() {
@@ -29,8 +28,11 @@ public class FootballerDb implements FootballerInterface {
 	@Override
 	public void createNewFootballer(Footballer footballer) {
 //		sessionFactory = buildFootballerSessionFactory();
-		session = sessionFactory.getCurrentSession();
-		session.save(footballer);
+		Session session = sessionFactory.getCurrentSession();
+		// If it's a new Footballer it will Save, otherwise it will get a Hidden Form Id and Update existing Footballer
+		System.out.println("!!! TESTING UPDATE BEFORE SAVE !!! ID: " + footballer.getId());
+		session.saveOrUpdate(footballer);
+		System.out.println("!!! TESTING UPDATE AFTER SAVE !!! ID: " + footballer.getId());
 //		try {
 //			System.out.println("Creating a new Footballer ...");
 //			session.beginTransaction();
@@ -49,7 +51,7 @@ public class FootballerDb implements FootballerInterface {
 	// Retrieve all Footballers
 	@Override
 	public List<Footballer> retrieveAllFootballersFromDb() {
-		session = sessionFactory.getCurrentSession();
+		Session session = sessionFactory.getCurrentSession();
 		Query<Footballer> query = session.createQuery("from Footballer", Footballer.class);
 		List<Footballer> footballersList = query.getResultList();
 		
@@ -73,7 +75,7 @@ public class FootballerDb implements FootballerInterface {
 	// Retrieve the Footballer by given Footballer ID
 	@Override
 	public Footballer getFootballerById(int id) {
-		session = sessionFactory.getCurrentSession();
+		Session session = sessionFactory.getCurrentSession();
 		Footballer footballer = session.get(Footballer.class, id);
 		
 		return footballer;
