@@ -13,16 +13,19 @@
 	
 	<body>
 		<div class="container page_container">
-			<h4>Home Page</h4>
+			<h4>Home Page Test</h4>
 			
 			<p>Date: ${todayDate}</p>
-			
+
 			<div>
 				<a href="showRegistrationForm" class="link-text">Registration Form</a>
 			</div>
+			
+			<!-- 
 			<div>
 				<a href="showAllPlayers" class="link-text">Show All Players</a>
 			</div>
+			-->
 			
 			<div id="footer" class="text-center">
 				Artur Sukiennik | &copy;opyright | Wipro Limited | 2019

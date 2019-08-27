@@ -1,5 +1,22 @@
-*.jar
+# Eclipse
+
+bin/
+.classpath
+.project
+.settings/
+
+# Maven
+
+*.log
+target/
+build/
+release.properties
+dependency-reduced-pom.xml
+
 *.class
-*.git
-/build
-hibernate.cfg.xml
+*.jar
+*.war
+*.ear
+README.html
+.idea/workspace.xml
+.idea/tasks.xml
