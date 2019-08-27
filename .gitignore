@@ -1,18 +1,12 @@
-# Eclipse
-
 bin/
 .classpath
 .project
 .settings/
-
-# Maven
-
 *.log
 target/
 build/
 release.properties
 dependency-reduced-pom.xml
-
 *.class
 *.jar
 *.war
