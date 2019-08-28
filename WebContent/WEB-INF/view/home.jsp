@@ -13,7 +13,7 @@
 	
 	<body>
 		<div class="container page_container">
-			<h4>Home Page Test 2</h4>
+			<h4>Home Page Test</h4>
 			
 			<p>Date: ${todayDate}</p>
 
