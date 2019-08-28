@@ -1,5 +1,6 @@
 package com.torres.controller;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
@@ -44,6 +45,14 @@ public class MainController {
 		return "registration_form";
 	}
 	
+//	@GetMapping("/showRegistrationFormToUpdate")
+//	public String showRegistrationFormToUpdate(@RequestParam("footballerId") int id, Model model) {
+//		Footballer footballer = footballerService.getFootballer(id);
+//		model.addAttribute("footballer", footballer);
+//		
+//		return "registration_form";
+//	}
+	
 	@PostMapping("/processRegistrationForm")
 	public String processRegistrationForm(@Valid @ModelAttribute("footballer") Footballer footballer, BindingResult result, Model model) {
 		if (result.hasErrors()) {
@@ -66,6 +75,22 @@ public class MainController {
 			//return "redirect:/main/showConfirmation";
 		}
 	}
+	
+	@GetMapping("/showAllPlayers")
+	public String showAllRegisteredPlayers(Model model) throws ParseException {
+		//List<Footballer> listOfFootballersFromDb = footballerService.getAllFootballers();		
+		//model.addAttribute("players", listOfFootballersFromDb);
+		
+		return "players";
+	}
+	
+//	@GetMapping("/deletePlayer")
+//	public String deleteFootballer(@RequestParam("footballerId") int id, Model model) {
+//		model.addAttribute("deleteMessage", "Footballer with ID " + id + " Successfully Deleted");
+//		footballerService.deleteFootballer(id);
+//		
+//		return "confirmation";
+//	}
 	
 	@ModelAttribute("positionSelection")
 	public ArrayList<String> positionSelection() {
