@@ -5,7 +5,7 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
-		<title>Football Home Page</title>
+		<title>Football Home Page Test</title>
 		<!-- CSS References -->
 		<link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
 		<link href="<c:url value="/resources/css/vendor/bootstrap.min.css" />" rel="stylesheet">
