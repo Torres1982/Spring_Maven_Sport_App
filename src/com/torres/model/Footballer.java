@@ -16,7 +16,7 @@ import javax.validation.constraints.Size;
 import org.springframework.stereotype.Component;
 
 import com.torres.util.Constants;
-import com.torres.validation.FootballerCategory;
+//import com.torres.validation.FootballerCategory;
 
 @Component("footballer")
 @Entity
@@ -56,7 +56,7 @@ public class Footballer implements Serializable {
 	@Column(name = "rating")
 	private Integer rating;
 	@NotNull(message = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_NULL)
-	@FootballerCategory(value = {"GK", "DEF", "MID", "ATT"}, message = "Must Start with 'GK' or 'DEF' or 'MID' or 'ATT'")
+	//@FootballerCategory(value = {"GK", "DEF", "MID", "ATT"}, message = "Must Start with 'GK' or 'DEF' or 'MID' or 'ATT'")
 	@Column(name = "category")
 	private String category;
 		

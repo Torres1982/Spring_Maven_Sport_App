@@ -1,12 +1,15 @@
 package com.torres.controller;
 
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
 
+import javax.sql.DataSource;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,11 +33,33 @@ public class MainController {
 		dataBinder.registerCustomEditor(String.class, stringTrimmer);
 	}
 	
+//	@Autowired
+//	public DataSource dataSource;
+//	
+//	@RequestMapping("/checkConnection")
+//	public String checkDB(Model model) {
+//		try {
+//			if (dataSource.getConnection() != null) {
+//				model.addAttribute("todayDate", "DB Connection Successful!");
+//			} else {
+//				model.addAttribute("todayDate", "DB Connection Successful!");
+//			}
+//		} catch (SQLException ex) {
+//			model.addAttribute("todayDate", "SQL Exception! DB Connection!");
+//		}
+//		return "home";
+//	}
+	
 	@RequestMapping({"/", "/home"})
 	public String showIndexPage(Model model) {
 		model.addAttribute("todayDate", new Date());
 		
 		return "home";
+	}
+	
+	@GetMapping("/showLoginPage")
+	public String showLoginPage() {
+		return "login_page";
 	}
 	
 	@GetMapping("/showRegistrationForm")
