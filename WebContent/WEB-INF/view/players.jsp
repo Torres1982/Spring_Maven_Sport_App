@@ -40,12 +40,12 @@
 							<tbody>
 								<c:forEach var="item" items="${players}">
 									<!-- Update Link for Each Individual Player -->
-									<c:url var="updatePlayer" value="/footballer/showRegistrationFormToUpdate">
+									<c:url var="updatePlayer" value="/main/showRegistrationFormToUpdate">
 										<c:param  name="footballerId" value="${item.id}" />
 									</c:url>
 									
 									<!-- Delete Link for Each Individual Player -->
-									<c:url var="deletePlayer" value="/footballer/deletePlayer">
+									<c:url var="deletePlayer" value="/main/deletePlayer">
 										<c:param  name="footballerId" value="${item.id}" />
 									</c:url>
 									

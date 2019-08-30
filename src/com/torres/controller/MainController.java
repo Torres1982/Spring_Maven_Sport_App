@@ -1,12 +1,11 @@
 package com.torres.controller;
 
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
+import java.util.List;
 
-import javax.sql.DataSource;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,35 +19,23 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.torres.model.Footballer;
+import com.torres.service.FootballerService;
 
 @Controller
 @RequestMapping("/main")
 public class MainController {
+	@Autowired
+	private FootballerService footballerService;
+	
 	// Removes White Spaces from the String
 	@InitBinder
 	public void initBinder(WebDataBinder dataBinder) {
 		StringTrimmerEditor stringTrimmer = new StringTrimmerEditor(true);
 		dataBinder.registerCustomEditor(String.class, stringTrimmer);
 	}
-	
-//	@Autowired
-//	public DataSource dataSource;
-//	
-//	@RequestMapping("/checkConnection")
-//	public String checkDB(Model model) {
-//		try {
-//			if (dataSource.getConnection() != null) {
-//				model.addAttribute("todayDate", "DB Connection Successful!");
-//			} else {
-//				model.addAttribute("todayDate", "DB Connection Successful!");
-//			}
-//		} catch (SQLException ex) {
-//			model.addAttribute("todayDate", "SQL Exception! DB Connection!");
-//		}
-//		return "home";
-//	}
 	
 	@RequestMapping({"/", "/home"})
 	public String showIndexPage(Model model) {
@@ -70,13 +57,13 @@ public class MainController {
 		return "registration_form";
 	}
 	
-//	@GetMapping("/showRegistrationFormToUpdate")
-//	public String showRegistrationFormToUpdate(@RequestParam("footballerId") int id, Model model) {
-//		Footballer footballer = footballerService.getFootballer(id);
-//		model.addAttribute("footballer", footballer);
-//		
-//		return "registration_form";
-//	}
+	@GetMapping("/showRegistrationFormToUpdate")
+	public String showRegistrationFormToUpdate(@RequestParam("footballerId") int id, Model model) {
+		Footballer footballer = footballerService.getFootballer(id);
+		model.addAttribute("footballer", footballer);
+		
+		return "registration_form";
+	}
 	
 	@PostMapping("/processRegistrationForm")
 	public String processRegistrationForm(@Valid @ModelAttribute("footballer") Footballer footballer, BindingResult result, Model model) {
@@ -92,8 +79,7 @@ public class MainController {
 				model.addAttribute("message", "Existing Footballer Updated:");
 			}
 			
-			// TODO : Add below line when DB will be applied
-			//footballerService.createFootballer(footballer);					
+			footballerService.createFootballer(footballer);					
 			System.out.println("Footballer Saved Successfully! Id: " + footballer.getId() + " " + footballer.getFirstName() + " " + footballer.getLastName());
 
 			return "confirmation";
@@ -103,19 +89,19 @@ public class MainController {
 	
 	@GetMapping("/showAllPlayers")
 	public String showAllRegisteredPlayers(Model model) throws ParseException {
-		//List<Footballer> listOfFootballersFromDb = footballerService.getAllFootballers();		
-		//model.addAttribute("players", listOfFootballersFromDb);
+		List<Footballer> listOfFootballersFromDb = footballerService.getAllFootballers();		
+		model.addAttribute("players", listOfFootballersFromDb);
 		
 		return "players";
 	}
 	
-//	@GetMapping("/deletePlayer")
-//	public String deleteFootballer(@RequestParam("footballerId") int id, Model model) {
-//		model.addAttribute("deleteMessage", "Footballer with ID " + id + " Successfully Deleted");
-//		footballerService.deleteFootballer(id);
-//		
-//		return "confirmation";
-//	}
+	@GetMapping("/deletePlayer")
+	public String deleteFootballer(@RequestParam("footballerId") int id, Model model) {
+		model.addAttribute("deleteMessage", "Footballer with ID " + id + " Successfully Deleted");
+		footballerService.deleteFootballer(id);
+		
+		return "confirmation";
+	}
 	
 	@ModelAttribute("positionSelection")
 	public ArrayList<String> positionSelection() {

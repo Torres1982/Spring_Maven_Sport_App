@@ -16,7 +16,7 @@ import javax.validation.constraints.Size;
 import org.springframework.stereotype.Component;
 
 import com.torres.util.Constants;
-//import com.torres.validation.FootballerCategory;
+import com.torres.validation.FootballerCategory;
 
 @Component("footballer")
 @Entity
@@ -51,12 +51,13 @@ public class Footballer implements Serializable {
 	@Column(name = "position")
 	private String position;
 	@NotNull(message = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_NULL)
+	//@NotNull(message = "{rating.notString}")
 	@Min(value = 0, message = "Must Be Greater Than or Equal To 0")
 	@Max(value = 100, message = "Must Be Less Than or Equal To 100")
 	@Column(name = "rating")
 	private Integer rating;
 	@NotNull(message = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_NULL)
-	//@FootballerCategory(value = {"GK", "DEF", "MID", "ATT"}, message = "Must Start with 'GK' or 'DEF' or 'MID' or 'ATT'")
+	@FootballerCategory(value = {"GK", "DEF", "MID", "ATT"}, message = "Must Start with 'GK' or 'DEF' or 'MID' or 'ATT'")
 	@Column(name = "category")
 	private String category;
 		
