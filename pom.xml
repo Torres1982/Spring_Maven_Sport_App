@@ -14,7 +14,7 @@
   		<springframework.version>5.0.2.RELEASE</springframework.version>
   		<springsecurity.version>5.0.0.RELEASE</springsecurity.version>
   		<hibernate.version>5.2.17.Final</hibernate.version>
-  		<c3p0.version>0.9.5.2</c3p0.version>
+  		<c3p0.version>0.9.5.3</c3p0.version>
   	</properties>
   	
   	<dependencies>
