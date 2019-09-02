@@ -50,8 +50,9 @@ public class LoggingAspect {
 	@AfterReturning(pointcut = "combinedPackagesPointcut()", returning = "result")
 	public void afterReturningAOPAdvice(JoinPoint joinPoint, Object result) {
 		// Display the method we are returning from
-		logger.info("**************************************** @AfterReturning from: " + joinPoint.getSignature().toShortString());
+		logger.info("* * * * * * * * * * * * * * * * * * * * @AfterReturning from: " + joinPoint.getSignature().toShortString());
 		
 		// Display the Result from the method
+		logger.info("* * * * * * * * * * * * * * * * * * * * @AfterReturning Result: " + result);
 	}
 }

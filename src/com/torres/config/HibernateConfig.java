@@ -38,7 +38,11 @@ public class HibernateConfig {
 	    properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
 	    properties.put("hibernate.show_sql", true);
 	    properties.put("hibernate.format_sql", true);
-	    properties.put("hibernate.jdbc.batch_size", 20);
+	    properties.put("hibernate.jdbc.batch_size", 16);
+	    properties.put("hibernate.c3p0.min_size", 5);
+	    properties.put("hibernate.c3p0.max_size", 20);
+	    properties.put("hibernate.c3p0.timeout", 1800);
+	    properties.put("hibernate.c3p0.max_statements", 50);
 	    
 	    return properties;
 	}
