@@ -40,7 +40,7 @@ public class MainController {
 	@RequestMapping({"/", "/home"})
 	public String showIndexPage(Model model) {
 		model.addAttribute("todayDate", new Date());
-		
+
 		return "home";
 	}
 	

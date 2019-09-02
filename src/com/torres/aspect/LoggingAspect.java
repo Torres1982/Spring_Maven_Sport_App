@@ -1,6 +1,6 @@
 package com.torres.aspect;
 
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
