@@ -29,9 +29,12 @@
 				</div>
 			</div>
 
-			<div>
-				<a href="showRegistrationForm" class="link-text">Registration Form</a>
-			</div>
+			<!-- Display this Link only for Managers and Admin -->
+			<security:authorize access="hasAnyRole('ADMIN', 'MANAGER')">
+				<div>
+					<a href="showRegistrationForm" class="link-text">Player Registration Form</a>
+				</div>
+			</security:authorize>
 			
 			<div>
 				<a href="showAllPlayers" class="link-text">Show All Players</a>
