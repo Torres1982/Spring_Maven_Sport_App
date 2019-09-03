@@ -20,7 +20,14 @@
 				<!-- Display an Error Message if credentials are wrong -->
 				<c:if test="${param.error != null}">
 					<div class="registration-form-error">
-						Your Credentials are wrong!
+						Your Credentials are Wrong!
+					</div>
+				</c:if>
+				
+				<!-- Display the Logout Message -->
+				<c:if test="${param.logout != null}">
+					<div class="registration-form-error">
+						Your Have Been Logged Out!
 					</div>
 				</c:if>
 				

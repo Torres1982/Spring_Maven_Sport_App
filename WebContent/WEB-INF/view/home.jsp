@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -15,7 +16,13 @@
 		<div class="container page_container">
 			<h4>Home Page Test</h4>
 			
-			<p>Date: ${todayDate}</p>
+			<div>
+				Date: ${todayDate}
+				
+				<form:form action="${pageContext.request.contextPath}/logout" method="POST">
+					<input type="submit" id="footballer-registration-button" class="btn btn-warning btn-sm" value="Logout" />
+				</form:form>
+			</div>
 
 			<div>
 				<a href="showRegistrationForm" class="link-text">Registration Form</a>
