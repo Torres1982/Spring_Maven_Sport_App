@@ -18,15 +18,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.inMemoryAuthentication()
 			.withUser("artur").password(passwordEncoder().encode("artur")).roles("EMPLOYEE")
 			.and()
-			.withUser("michal").password(passwordEncoder().encode("michal")).roles("EMPLOYEE")
+			.withUser("michal").password(passwordEncoder().encode("michal")).roles("MANAGER")
 			.and()
-			.withUser("paul").password(passwordEncoder().encode("paul")).roles("EMPLOYEE");
+			.withUser("paul").password(passwordEncoder().encode("paul")).roles("ADMIN");
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			//.antMatchers("/css/**").permitAll() // It supports MIME type
 			.anyRequest().authenticated()
 			.and()
 			.formLogin()
@@ -35,7 +34,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.defaultSuccessUrl("/main/home", true)
 				.permitAll()
 			.and()
-			.logout().permitAll();
+			.logout()
+				.permitAll();
 	}
 	
 	@Override

@@ -72,6 +72,13 @@
 			<artifactId>spring-security-config</artifactId>
 			<version>${springsecurity.version}</version>
 		</dependency>
+		
+		<!-- Support for Spring Security Taglibs -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${springsecurity.version}</version>
+		</dependency>
 
 		<!-- Servlet API Dependency -->
 		<dependency>

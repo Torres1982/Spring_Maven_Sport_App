@@ -67,6 +67,7 @@ input[type="radio"] {
 /* --------------------------- Registration Form ---------------------- */
 .registration-form-error {
 	color: yellow;
+	margin-bottom: 1rem;
 }
 
 /* --------------------------- Registration Table ---------------------- */

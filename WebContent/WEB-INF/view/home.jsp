@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -16,12 +17,16 @@
 		<div class="container page_container">
 			<h4>Home Page Test</h4>
 			
-			<div>
-				Date: ${todayDate}
-				
-				<form:form action="${pageContext.request.contextPath}/logout" method="POST">
-					<input type="submit" id="footballer-registration-button" class="btn btn-warning btn-sm" value="Logout" />
-				</form:form>
+			<div class="form-group row">
+				<div class="col-sm-7">
+					Date: ${todayDate}
+				</div>
+
+				<div class="col-sm-5">
+					<form:form action="${pageContext.request.contextPath}/logout" method="POST">
+						<input type="submit" id="footballer-registration-button" class="btn btn-warning btn-sm" value="Logout" />
+					</form:form>
+				</div>
 			</div>
 
 			<div>
