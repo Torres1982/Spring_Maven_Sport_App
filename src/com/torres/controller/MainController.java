@@ -44,11 +44,6 @@ public class MainController {
 		return "home";
 	}
 	
-	@GetMapping("/showLoginPage")
-	public String showLoginPage() {
-		return "login_page";
-	}
-	
 	@GetMapping("/showRegistrationForm")
 	public String showRegistrationForm(Model model) {
 		Footballer footballer = new Footballer();

@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +33,9 @@
 									<th>Strength</th>
 									<th>Position</th>
 									<th>Rating</th>
-									<th>Action</th>
+									<security:authorize access="hasAnyRole('ADMIN', 'MANAGER')">
+										<th>Action</th>
+									</security:authorize>
 									<!-- <th>Category</th> -->
 								</tr>
 							</thead>
@@ -58,10 +61,12 @@
 										<td>${item.strength}</td>
 										<td>${item.position}</td>
 										<td>${item.rating}</td>
-										<td>
-											<a href="${updatePlayer}" class="btn btn-warning btn-sm">Update</a>
-											<a href="${deletePlayer}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete ${item.firstName} ${item.lastName}?');">Remove</a>
-										</td>
+										<security:authorize access="hasAnyRole('ADMIN', 'MANAGER')">
+											<td>
+												<a href="${updatePlayer}" class="btn btn-warning btn-sm">Update</a>
+												<a href="${deletePlayer}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete ${item.firstName} ${item.lastName}?');">Remove</a>
+											</td>
+										</security:authorize>
 										<!-- <td>${item.category}</td> -->
 									</tr>
 								</c:forEach>

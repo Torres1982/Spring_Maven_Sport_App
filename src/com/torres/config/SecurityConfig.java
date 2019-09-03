@@ -18,24 +18,31 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.inMemoryAuthentication()
 			.withUser("artur").password(passwordEncoder().encode("artur")).roles("EMPLOYEE")
 			.and()
-			.withUser("michal").password(passwordEncoder().encode("michal")).roles("MANAGER")
+			.withUser("michal").password(passwordEncoder().encode("michal")).roles("EMPLOYEE", "MANAGER")
 			.and()
-			.withUser("paul").password(passwordEncoder().encode("paul")).roles("ADMIN");
+			.withUser("paul").password(passwordEncoder().encode("paul")).roles("EMPLOYEE", "ADMIN");
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			.anyRequest().authenticated()
+			//.anyRequest().authenticated()
+			.antMatchers("/").permitAll()
+			.antMatchers("/main/showRegistrationForm/**").hasAnyRole("ADMIN", "MANAGER")
+			.antMatchers("/main/showRegistrationFormToUpdate/**").hasAnyRole("ADMIN", "MANAGER")
+			.antMatchers("/main/deletePlayer/**").hasAnyRole("ADMIN", "MANAGER")
 			.and()
 			.formLogin()
-				.loginPage("/main/showLoginPage")
+				.loginPage("/showLoginPage")
 				.loginProcessingUrl("/authenticateUser")
 				.defaultSuccessUrl("/main/home", true)
 				.permitAll()
 			.and()
 			.logout()
-				.permitAll();
+				//.logoutSuccessUrl("/")
+				.permitAll()
+			.and()
+			.exceptionHandling().accessDeniedPage("/accessDenied");
 	}
 	
 	@Override
