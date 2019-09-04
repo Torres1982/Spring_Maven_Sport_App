@@ -2,7 +2,7 @@ package com.torres.config;
 
 import java.beans.PropertyVetoException;
 import java.util.Properties;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 import javax.sql.DataSource;
 
@@ -30,8 +30,8 @@ public class HibernateConfig {
 	@Bean
 	public SessionFactory sessionFactory() {
 		LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(securityDataSource());
-		//builder.scanPackages("com.torres.model").addProperties(hibernateProperties());
-		builder.scanPackages("com.torres.model");
+		builder.scanPackages("com.torres.model").addProperties(hibernateProperties());
+		//builder.scanPackages("com.torres.model");
 		return builder.buildSessionFactory();
 	}
 	
@@ -46,6 +46,10 @@ public class HibernateConfig {
 		
 		logger.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& JDBC url: " + env.getProperty("jdbc.url"));
 		logger.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& JDBC user: " + env.getProperty("jdbc.user"));
+		logger.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& JDBC pass: " + env.getProperty("jdbc.password"));
+		logger.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Initial Pool Size: " + env.getProperty("connection.pool.initialPoolSize"));
+		logger.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Min Pool Size: " + env.getProperty("connection.pool.minPoolSize"));
+		logger.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& Max Pool Size: " + env.getProperty("connection.pool.maxPoolSize"));
 		
 		securityDataSource.setJdbcUrl(env.getProperty("jdbc.url"));
 		securityDataSource.setUser(env.getProperty("jdbc.user"));
@@ -68,28 +72,33 @@ public class HibernateConfig {
 	
 //	@Bean
 //	public DataSource dataSource() {
-//		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-//		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-//		dataSource.setUrl("jdbc:mysql://localhost:3306/football");
-//	    dataSource.setUsername("Artur");
+//		//DriverManagerDataSource dataSource = new DriverManagerDataSource();
+//		ComboPooledDataSource dataSource = new ComboPooledDataSource();
+//		try {
+//			dataSource.setDriverClass("com.mysql.jdbc.Driver");
+//		} catch (PropertyVetoException e) {
+//			throw new RuntimeException(e);
+//		}
+//		dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/football");
+//	    dataSource.setUser("Artur");
 //		dataSource.setPassword("admin");
 //	
 //		return dataSource;
 //	}
 	
-//	private Properties hibernateProperties() {
-//	    Properties properties = new Properties();
-//	    properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-//	    properties.put("hibernate.show_sql", true);
-//	    properties.put("hibernate.format_sql", true);
+	private Properties hibernateProperties() {
+	    Properties properties = new Properties();
+	    properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+	    properties.put("hibernate.show_sql", true);
+	    properties.put("hibernate.format_sql", true);
 //	    properties.put("hibernate.jdbc.batch_size", 16);
 //	    properties.put("hibernate.c3p0.min_size", 5);
 //	    properties.put("hibernate.c3p0.max_size", 20);
-//	    properties.put("hibernate.c3p0.timeout", 1800);
+//	    properties.put("hibernate.c3p0.timeout", 3000);
 //	    properties.put("hibernate.c3p0.max_statements", 50);
 //	    
-//	    return properties;
-//	}
+	    return properties;
+	}
 	
 	@Bean
 	public HibernateTransactionManager transactionManager() {
