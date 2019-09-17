@@ -10,9 +10,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
+import org.springframework.security.provisioning.UserDetailsManager;
 
 @Configuration
 @EnableWebSecurity
@@ -23,24 +22,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.jdbcAuthentication().dataSource(securityDataSource);
-			//.passwordEncoder(passwordEncoder());
-		
-//		auth.inMemoryAuthentication()
-//			.withUser("artur").password(passwordEncoder().encode("artur")).roles("EMPLOYEE")
-//			.and()
-//			.withUser("michal").password(passwordEncoder().encode("michal")).roles("EMPLOYEE", "MANAGER")
-//			.and()
-//			.withUser("paul").password(passwordEncoder().encode("paul")).roles("EMPLOYEE", "ADMIN");
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
-			.anyRequest().authenticated()
+		http.authorizeRequests()			
+			.antMatchers("/main/showRegistrationForm/**").hasAnyRole("MANAGER", "ADMIN")
+			.antMatchers("/main/showRegistrationFormToUpdate/**").hasAnyRole("MANAGER", "ADMIN")
+			.antMatchers("/main/deletePlayer").hasRole("ADMIN")
 			.antMatchers("/").permitAll()
-			.antMatchers("/main/showRegistrationForm/**").hasAnyRole("ADMIN", "MANAGER")
-			.antMatchers("/main/showRegistrationFormToUpdate/**").hasAnyRole("ADMIN", "MANAGER")
-			.antMatchers("/main/deletePlayer/**").hasAnyRole("ADMIN", "MANAGER")
 			.and()
 			.formLogin()
 				.loginPage("/showLoginPage")
@@ -49,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.permitAll()
 			.and()
 			.logout()
-				//.logoutSuccessUrl("/")
+				.logoutSuccessUrl("/")
 				.permitAll()
 			.and()
 			.exceptionHandling().accessDeniedPage("/accessDenied");
@@ -60,8 +50,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	    web.ignoring().antMatchers("/resources/**");
 	}
 	
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+	@Bean
+	public UserDetailsManager userDetailsManager() {		
+		JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager();
+		jdbcUserDetailsManager.setDataSource(securityDataSource);
+		
+		return jdbcUserDetailsManager; 
+	}
 }

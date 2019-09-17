@@ -12,9 +12,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
@@ -25,14 +24,16 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 public class HibernateConfig {
 	@Autowired
 	private Environment env;
-	private Logger logger = Logger.getLogger(getClass().getName());
-	
+	private Logger logger = Logger.getLogger(getClass().getName());	
+
 	@Bean
-	public SessionFactory sessionFactory() {
-		LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(securityDataSource());
-		builder.scanPackages("com.torres.model").addProperties(hibernateProperties());
-		//builder.scanPackages("com.torres.model");
-		return builder.buildSessionFactory();
+	public LocalSessionFactoryBean sessionFactory() {
+		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+		sessionFactory.setDataSource(securityDataSource());
+		sessionFactory.setPackagesToScan(env.getProperty("hibernate.packagesToScan"));
+		sessionFactory.setHibernateProperties(getHibernateProperties());
+		
+		return sessionFactory;
 	}
 	
 	@Bean
@@ -63,45 +64,28 @@ public class HibernateConfig {
 		return securityDataSource;
 	}
 	
+	// Set up Hibernate properties
+	private Properties getHibernateProperties() {
+		Properties properties = new Properties();
+		properties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
+		properties.setProperty("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
+		properties.setProperty("hibernate.format_sql", env.getProperty("hibernate.format_sql"));
+		
+		return properties;
+	}
+	
+	// Enable Transaction Management
+	@Bean
+	@Autowired
+	public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
+	    return new HibernateTransactionManager(sessionFactory);
+	}
+	
+	// Convert String properties to integer values
 	private int getIntProperty(String propertyName) {
 		String propertyValueString = env.getProperty(propertyName);
 		int propertyValueInteger = Integer.parseInt(propertyValueString);
 		
 		return propertyValueInteger;
-	}
-	
-//	@Bean
-//	public DataSource dataSource() {
-//		//DriverManagerDataSource dataSource = new DriverManagerDataSource();
-//		ComboPooledDataSource dataSource = new ComboPooledDataSource();
-//		try {
-//			dataSource.setDriverClass("com.mysql.jdbc.Driver");
-//		} catch (PropertyVetoException e) {
-//			throw new RuntimeException(e);
-//		}
-//		dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/football");
-//	    dataSource.setUser("Artur");
-//		dataSource.setPassword("admin");
-//	
-//		return dataSource;
-//	}
-	
-	private Properties hibernateProperties() {
-	    Properties properties = new Properties();
-	    properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-	    properties.put("hibernate.show_sql", true);
-	    properties.put("hibernate.format_sql", true);
-//	    properties.put("hibernate.jdbc.batch_size", 16);
-//	    properties.put("hibernate.c3p0.min_size", 5);
-//	    properties.put("hibernate.c3p0.max_size", 20);
-//	    properties.put("hibernate.c3p0.timeout", 3000);
-//	    properties.put("hibernate.c3p0.max_statements", 50);
-//	    
-	    return properties;
-	}
-	
-	@Bean
-	public HibernateTransactionManager transactionManager() {
-	    return new HibernateTransactionManager(sessionFactory());
 	}
 }

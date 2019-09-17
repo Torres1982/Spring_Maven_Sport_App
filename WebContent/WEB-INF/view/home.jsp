@@ -15,17 +15,34 @@
 	
 	<body>
 		<div class="container page_container">
-			<h4>Home Page Test</h4>
+			<h4>Home Page</h4>
 			
 			<div class="form-group row">
 				<div class="col-sm-7">
 					Date: ${todayDate}
 				</div>
-
+				
 				<div class="col-sm-5">
-					<form:form action="${pageContext.request.contextPath}/logout" method="POST">
-						<input type="submit" id="footballer-registration-button" class="btn btn-warning btn-sm" value="Logout" />
-					</form:form>
+					<security:authorize access="isAuthenticated()">
+						<form:form action="${pageContext.request.contextPath}/logout" method="POST">
+							<input type="submit" id="footballer-registration-button" class="btn btn-warning btn-sm" value="Logout" />
+						</form:form>
+					</security:authorize>
+					<security:authorize access="!isAuthenticated()">
+						<form:form action="${pageContext.request.contextPath}/showLoginPage" method="GET">
+							<input type="submit" id="footballer-registration-button" class="btn btn-warning btn-sm" value="Login" />
+						</form:form>
+					</security:authorize>
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<div class="col-sm-7">
+					<div>
+						<security:authorize access="isAuthenticated()">
+							Hello <security:authentication property="name" />
+						</security:authorize>
+					</div>
 				</div>
 			</div>
 

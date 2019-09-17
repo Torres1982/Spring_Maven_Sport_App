@@ -61,12 +61,16 @@
 										<td>${item.strength}</td>
 										<td>${item.position}</td>
 										<td>${item.rating}</td>
-										<security:authorize access="hasAnyRole('ADMIN', 'MANAGER')">
-											<td>
+										
+										<security:authorize access="hasRole('ADMIN') or hasRole('MANAGER')">
+											<td>						
 												<a href="${updatePlayer}" class="btn btn-warning btn-sm">Update</a>
-												<a href="${deletePlayer}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete ${item.firstName} ${item.lastName}?');">Remove</a>
+												
+												<security:authorize access="hasRole('ADMIN')">	
+													<a href="${deletePlayer}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete ${item.firstName} ${item.lastName}?');">Remove</a>
+												</security:authorize>
 											</td>
-										</security:authorize>
+										</security:authorize>										
 										<!-- <td>${item.category}</td> -->
 									</tr>
 								</c:forEach>

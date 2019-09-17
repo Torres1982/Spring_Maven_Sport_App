@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableWebMvc
 @EnableAspectJAutoProxy(proxyTargetClass=true)
 @ComponentScan(basePackages="com.torres")
+@PropertySource({"classpath:jdbc.properties", "classpath:messages.properties"})
 public class SportAppConfig implements WebMvcConfigurer {
 	@Bean
 	public ViewResolver viewResolver() {
@@ -30,7 +32,7 @@ public class SportAppConfig implements WebMvcConfigurer {
    @Bean
    public MessageSource messageSource() {
       ReloadableResourceBundleMessageSource source = new ReloadableResourceBundleMessageSource();
-      source.setBasename("classpath:messages");
+      source.setBasename("classpath:messages.properties");
       source.setDefaultEncoding("UTF-8");
       return source;
    }

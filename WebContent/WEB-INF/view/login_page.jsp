@@ -47,7 +47,7 @@
 					</div>
 				</div>
 				
-				<input type="submit" id="footballer-registration-button" class="btn btn-warning btn-sm" value="Log In" />
+				<input type="submit" id="footballer-registration-button" class="btn btn-warning btn-sm" value="Login" />
 			</form:form>
 		</div>
 	</body>
