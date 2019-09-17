@@ -35,4 +35,5 @@ README.html
 *.zip
 
 *.log
-build/
+build/debug.log
+src/jdbc.properties
