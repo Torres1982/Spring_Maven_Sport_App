@@ -15,6 +15,31 @@
 	<body>
 		<div class="container page_container">
 			<h4>App User Registration Form</h4>
+			
+			<form:form action="${pageContext.request.contextPath}/register/processAppUserRegistrationForm" method="POST" modelAttribute="appUser" class="form-horizontal">
+				<!-- Display an Error Message if wrong details are provided -->
+				<c:if test="${userRegistrationError != null}">
+					<div class="registration-form-error">
+						${userRegistrationError}
+					</div>
+				</c:if>
+				
+				<div class="form-group row">
+					<div class="col-sm-7">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+						<form:input path="userName" class="registration-input form-control" placeholder="User Name" />
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<div class="col-sm-7">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span> 
+						<form:password path="password" class="registration-input form-control" placeholder="Password" />
+					</div>
+				</div>
+				
+				<button type="submit" id="footballer-registration-button" class="btn btn-warning btn-sm">Register User</button>
+			</form:form>
 		
 			<a href="${pageContext.request.contextPath}/main/home" class="link-text">Home Page</a>
 			

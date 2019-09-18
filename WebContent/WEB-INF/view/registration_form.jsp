@@ -16,8 +16,7 @@
 		<div class="container page_container">
 			<h4>Player Registration</h4>
 
-			<form:form action="processRegistrationForm" method="POST" modelAttribute="footballer" class="form-horizontal">
-			
+			<form:form action="processRegistrationForm" method="POST" modelAttribute="footballer" class="form-horizontal">			
 				<!-- This ID is used not to loose track for the Footballer ID (Update and Submit) -->
 				<form:hidden path="id" />
 				

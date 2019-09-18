@@ -13,5 +13,6 @@ public class Constants {
 	public interface UserRoles {
 		public final static String ROLE_ADMIN = "ADMIN";
 		public final static String ROLE_MANAGER = "MANAGER";
+		public final static String ROLE_USER = "USER";
 	}
 }

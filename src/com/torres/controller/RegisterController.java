@@ -2,9 +2,14 @@ package com.torres.controller;
 
 import org.apache.log4j.Logger;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.UserDetailsManager;
@@ -23,7 +28,7 @@ import com.torres.user.AppUser;
 public class RegisterController {
 	@Autowired
 	private UserDetailsManager userDetailsManager;
-	//private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+	private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	private Logger logger = Logger.getLogger(getClass().getName());
 	
 	@GetMapping("/showAppUserRegistrationForm")
@@ -36,14 +41,32 @@ public class RegisterController {
 
 	@PostMapping("/processAppUserRegistrationForm")
 	public String processAppUserRegistrationForm(@Valid @ModelAttribute("appUser") AppUser appUser, BindingResult result, Model model) {
+		String username = appUser.getUserName();
+		String userRegistrationError = "";
+		
 		if (result.hasErrors()) {
-			logger.info("Some Error Occurred while Submitting the Form!");
+			userRegistrationError = "User Name/Password cannot be Empty!";
+		} else if (isUserFoundInDatabase(username)) {
+			userRegistrationError = "User Already Exists!";
+		}
+		
+		if ((result.hasErrors()) || (isUserFoundInDatabase(username))) {			
+			AppUser appUserError = new AppUser();
+			model.addAttribute("appUser", appUserError);
+			model.addAttribute("userRegistrationError", userRegistrationError);
+			
 			logger.info("Binding Result: " + result);
 			
 			return "user_registration_form";
+		} else {
+			String encodedPassword = "{bcrypt}" + passwordEncoder.encode(appUser.getPassword());
+			List<GrantedAuthority> authorities = AuthorityUtils.createAuthorityList("ROLE_USER");
+			User newAppUser = new User(username, encodedPassword, authorities);
+			userDetailsManager.createUser(newAppUser);
+			logger.info("Successfully Created New User: " + username);
+			
+			return "confirmation";
 		}
-		
-		return "confirmation";
 	}
 	
 	// Check the DB if the Application User already exists
