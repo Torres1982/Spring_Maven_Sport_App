@@ -105,7 +105,7 @@
 				<input type="submit" id="footballer-registration-button" class="btn btn-warning btn-sm" value="Save Footballer" />
 			</form:form>
 			
-			<a href="home" class="link-text">Home Page</a>
+			<a href="${pageContext.request.contextPath}/main/home" class="link-text">Home Page</a>
 			
 			<div class="text-center footer">
 				Artur Sukiennik | &copy;opyright | Wipro Limited | 2019

@@ -13,6 +13,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 
+import com.torres.util.Constants;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -27,9 +29,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()			
-			.antMatchers("/main/showRegistrationForm/**").hasAnyRole("MANAGER", "ADMIN")
-			.antMatchers("/main/showRegistrationFormToUpdate/**").hasAnyRole("MANAGER", "ADMIN")
-			.antMatchers("/main/deletePlayer").hasRole("ADMIN")
+			.antMatchers("/main/showRegistrationForm/**").hasAnyRole(Constants.UserRoles.ROLE_MANAGER, Constants.UserRoles.ROLE_ADMIN)
+			.antMatchers("/main/showRegistrationFormToUpdate/**").hasAnyRole(Constants.UserRoles.ROLE_MANAGER, Constants.UserRoles.ROLE_ADMIN)
+			.antMatchers("/main/deletePlayer").hasRole(Constants.UserRoles.ROLE_ADMIN)
+			.antMatchers("/register/showAppUserRegistrationForm").hasRole(Constants.UserRoles.ROLE_ADMIN)
 			.antMatchers("/").permitAll()
 			.and()
 			.formLogin()

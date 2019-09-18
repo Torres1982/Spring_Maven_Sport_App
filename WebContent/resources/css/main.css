@@ -24,6 +24,10 @@ a.link-text:hover {
 	color: cyan;
 }
 
+.font_italic {
+	font-style: italic;
+}
+
 /* ----------------- Footballer Registration Form ------------------- */
 .registration-input {
 	width: 250px!important;

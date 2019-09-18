@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -5,38 +6,19 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
-		<title>Confirmation Page</title>
+		<title>App User Registration Form</title>
 		<!-- CSS References -->
 		<link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
 		<link href="<c:url value="/resources/css/vendor/bootstrap.min.css" />" rel="stylesheet">
 	</head>
-
+	
 	<body>
 		<div class="container page_container">
-			<c:choose>
-				<c:when test="${not empty footballer}">
-					<c:if test="${not empty message}">
-						<h4>${message}</h4>
-					</c:if>
-					
-					<p>${footballer.firstName} ${footballer.lastName} - ${footballer.club} (${footballer.country})</p>
-					<p>Date of Birth: ${footballer.dob}</p>
-					<p>Main Strength: ${footballer.strength}</p>
-					<p>Main Position: ${footballer.position}</p>			
-					<p>Category: ${footballer.category}</p>
-					<p>Overall Rating: ${footballer.rating}</p>
-				</c:when>
-				
-				<c:otherwise>
-					<c:if test="${not empty deleteMessage}">
-						<h4>${deleteMessage}</h4>
-					</c:if>
-				</c:otherwise>
-			</c:choose>
-			
+			<h4>App User Registration Form</h4>
+		
 			<a href="${pageContext.request.contextPath}/main/home" class="link-text">Home Page</a>
 			
-			<div id="footer" class="text-center">
+			<div id="footer" class="text-center footer">
 				Artur Sukiennik | &copy;opyright | Wipro Limited | 2019
 			</div>
 		</div>

@@ -19,7 +19,7 @@
 				You are not Authorised to access this site!
 			</div>
 			
-			<a href="home" class="link-text">Home Page</a>
+			<a href="${pageContext.request.contextPath}/main/home" class="link-text">Home Page</a>
 		</div>
 	</body>
 </html>

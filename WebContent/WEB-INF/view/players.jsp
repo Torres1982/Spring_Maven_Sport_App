@@ -84,7 +84,7 @@
 				</c:otherwise>
 			</c:choose>
 						
-			<a href="home" class="link-text">Home Page</a>
+			<a href="${pageContext.request.contextPath}/main/home" class="link-text">Home Page</a>
 			
 			<div class="text-center footer">
 				Artur Sukiennik | &copy;opyright | Wipro Limited | 2019

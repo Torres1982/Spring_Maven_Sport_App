@@ -18,8 +18,8 @@
 			<h4>Home Page</h4>
 			
 			<div class="form-group row">
-				<div class="col-sm-7">
-					Date: ${todayDate}
+				<div class="col-sm-7 font_italic">
+					${todayDate}
 				</div>
 				
 				<div class="col-sm-5">
@@ -28,6 +28,7 @@
 							<input type="submit" id="footballer-registration-button" class="btn btn-warning btn-sm" value="Logout" />
 						</form:form>
 					</security:authorize>
+					
 					<security:authorize access="!isAuthenticated()">
 						<form:form action="${pageContext.request.contextPath}/showLoginPage" method="GET">
 							<input type="submit" id="footballer-registration-button" class="btn btn-warning btn-sm" value="Login" />
@@ -46,15 +47,21 @@
 				</div>
 			</div>
 
-			<!-- Display this Link only for Managers and Admin -->
+			<security:authorize access="hasRole('ADMIN')">
+				<div>
+					<a href="${pageContext.request.contextPath}/register/showAppUserRegistrationForm" class="link-text">App User Registration Form</a>
+				</div>
+			</security:authorize>
+
+			<!-- Display the Link only for Roles: Managers and Admin -->
 			<security:authorize access="hasAnyRole('ADMIN', 'MANAGER')">
 				<div>
-					<a href="showRegistrationForm" class="link-text">Player Registration Form</a>
+					<a href="showRegistrationForm" class="link-text">Footballer Registration Form</a>
 				</div>
 			</security:authorize>
 			
 			<div>
-				<a href="showAllPlayers" class="link-text">Show All Players</a>
+				<a href="showAllPlayers" class="link-text">Show All Footballers</a>
 			</div>
 			
 			<div id="footer" class="text-center">

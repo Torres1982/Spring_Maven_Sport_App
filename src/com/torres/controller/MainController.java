@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
+import org.apache.log4j.Logger;
 
 import javax.validation.Valid;
 
@@ -29,6 +30,7 @@ import com.torres.service.FootballerService;
 public class MainController {
 	@Autowired
 	private FootballerService footballerService;
+	private Logger logger = Logger.getLogger(getClass().getName());
 	
 	// Removes White Spaces from the String
 	@InitBinder
@@ -63,8 +65,8 @@ public class MainController {
 	@PostMapping("/processRegistrationForm")
 	public String processRegistrationForm(@Valid @ModelAttribute("footballer") Footballer footballer, BindingResult result, Model model) {
 		if (result.hasErrors()) {
-			System.out.println("Some Required Fields are Left Blank!");
-			System.out.println("Binding Result: " + result);
+			logger.info("Some Error Occurred while Submitting the Form!");
+			logger.info("Binding Result: " + result);
 			
 			return "registration_form";
 		} else {
