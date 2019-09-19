@@ -7,9 +7,8 @@ import org.springframework.validation.Validator;
 
 import com.torres.user.AppUser;
 
-@Component("userValidator")
+@Component
 public class UserValidator implements Validator {
-
 	@Override
 	public boolean supports(Class<?> appUserClass) {
 		return AppUser.class.equals(appUserClass);
@@ -21,8 +20,8 @@ public class UserValidator implements Validator {
 		
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userName", "NotEmpty");
 		
-		if (appUser.getUserName().length() == 0 || appUser.getPassword().length() == 0) {
-			errors.rejectValue("userName", "Size.appUser.userName");
+		if (appUser.getUserName().length() == 0) {
+			errors.rejectValue("userName", "Username cannot be Empty!");
 		}
 	}
 }
