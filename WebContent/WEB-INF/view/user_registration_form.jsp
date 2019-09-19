@@ -26,16 +26,18 @@
 				
 				<div class="form-group row">
 					<div class="col-sm-7">
-						<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 						<form:input path="userName" class="registration-input form-control" placeholder="User Name" />
 					</div>
+					
+					<form:errors path="userName"></form:errors>
 				</div>
 				
 				<div class="form-group row">
 					<div class="col-sm-7">
-						<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span> 
 						<form:password path="password" class="registration-input form-control" placeholder="Password" />
 					</div>
+					
+					<form:errors path="password"></form:errors>
 				</div>
 				
 				<button type="submit" id="footballer-registration-button" class="btn btn-warning btn-sm">Register User</button>

@@ -6,13 +6,13 @@ import javax.validation.constraints.Size;
 import com.torres.util.Constants;
 
 public class AppUser {
-	@NotNull(message = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_NULL)
-	@Size(min = 4, message = Constants.AppUserValidation.ERROR_APP_USER_REGISTRATION_FORM_LENGTH)
+	//@NotNull(message = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_NULL)
+	//@Size(min = 2, message = Constants.AppUserValidation.ERROR_APP_USER_REGISTRATION_FORM_LENGTH)
 	private String userName;
-	@NotNull(message = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_NULL)
-	@Size(min = 4, message = Constants.AppUserValidation.ERROR_APP_USER_REGISTRATION_FORM_LENGTH)
+	//@NotNull(message = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_NULL)
+	//@Size(min = 4, message = Constants.AppUserValidation.ERROR_APP_USER_REGISTRATION_FORM_LENGTH)
 	private String password;
-	@NotNull(message = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_NULL)
+	//@NotNull(message = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_NULL)
 	private String role;
 	
 	// Default Constructor

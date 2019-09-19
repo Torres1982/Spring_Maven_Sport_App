@@ -22,12 +22,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.torres.user.AppUser;
+import com.torres.validation.UserValidator;
 
 @Controller
 @RequestMapping("/register")
 public class RegisterController {
 	@Autowired
 	private UserDetailsManager userDetailsManager;
+	@Autowired
+	private UserValidator userValidator;
 	private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	private Logger logger = Logger.getLogger(getClass().getName());
 	
@@ -42,18 +45,29 @@ public class RegisterController {
 	@PostMapping("/processAppUserRegistrationForm")
 	public String processAppUserRegistrationForm(@Valid @ModelAttribute("appUser") AppUser appUser, BindingResult result, Model model) {
 		String username = appUser.getUserName();
+		String plainPassword = appUser.getPassword();
 		String userRegistrationError = "";
 		
-		if (result.hasErrors()) {
-			userRegistrationError = "User Name/Password cannot be Empty!";
-		} else if (isUserFoundInDatabase(username)) {
-			userRegistrationError = "User Already Exists!";
-		}
+		userValidator.validate(appUser, result);
+		
+//		if (result.hasErrors()) {
+//			if (username.length() == 0 || plainPassword.length() == 0) {
+//				userRegistrationError = "User Name/Password cannot be Empty!";
+//			} else if (username.length() < 2) {
+//				userRegistrationError = "User Name Must Contain at Least 2 Characters!" + username.length();
+//			} else if (plainPassword.length() < 4) {
+//				userRegistrationError = "Password Must Contain at Least 4 Characters!" + plainPassword.length();
+//			} else {
+//				userRegistrationError = "Registration Error!";
+//			}
+//		} else if (isUserFoundInDatabase(username)) {
+//			userRegistrationError = "User Already Exists!";
+//		}
 		
 		if ((result.hasErrors()) || (isUserFoundInDatabase(username))) {			
 			AppUser appUserError = new AppUser();
 			model.addAttribute("appUser", appUserError);
-			model.addAttribute("userRegistrationError", userRegistrationError);
+			model.addAttribute("userRegistrationError", "userRegistrationError");
 			
 			logger.info("*** Binding Result: *** " + result);
 			
@@ -61,7 +75,7 @@ public class RegisterController {
 		} else {
 			String appUserMessage = "New Application User Created Successfully: " + username;
 			model.addAttribute("appUserMessage", appUserMessage);
-			String encodedPassword = "{bcrypt}" + passwordEncoder.encode(appUser.getPassword());
+			String encodedPassword = "{bcrypt}" + passwordEncoder.encode(plainPassword);
 			List<GrantedAuthority> authorities = AuthorityUtils.createAuthorityList("ROLE_USER");
 			User newAppUser = new User(username, encodedPassword, authorities);
 			userDetailsManager.createUser(newAppUser);

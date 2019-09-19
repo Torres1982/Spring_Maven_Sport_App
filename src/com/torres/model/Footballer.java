@@ -58,7 +58,7 @@ public class Footballer implements Serializable {
 	@Column(name = "rating")
 	private Integer rating;
 	@NotNull(message = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_NULL)
-	@FootballerCategory(value = {"GK", "DEF", "MID", "ATT"}, message = "Must Start with 'GK' or 'DEF' or 'MID' or 'ATT'")
+	@FootballerCategory(value = {"GK", "DEF", "MID", "ATT"}, message = "{category.prefix}")
 	@Column(name = "category")
 	private String category;
 		
