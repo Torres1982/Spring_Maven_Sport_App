@@ -27,6 +27,10 @@
 					<p>Overall Rating: ${footballer.rating}</p>
 				</c:when>
 				
+				<c:when test="${not empty appUserMessage}">
+					<h4>${appUserMessage}</h4>
+				</c:when>
+				
 				<c:otherwise>
 					<c:if test="${not empty deleteMessage}">
 						<h4>${deleteMessage}</h4>

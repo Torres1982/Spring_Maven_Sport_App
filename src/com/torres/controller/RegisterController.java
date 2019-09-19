@@ -55,15 +55,17 @@ public class RegisterController {
 			model.addAttribute("appUser", appUserError);
 			model.addAttribute("userRegistrationError", userRegistrationError);
 			
-			logger.info("Binding Result: " + result);
+			logger.info("*** Binding Result: *** " + result);
 			
 			return "user_registration_form";
 		} else {
+			String appUserMessage = "New Application User Created Successfully: " + username;
+			model.addAttribute("appUserMessage", appUserMessage);
 			String encodedPassword = "{bcrypt}" + passwordEncoder.encode(appUser.getPassword());
 			List<GrantedAuthority> authorities = AuthorityUtils.createAuthorityList("ROLE_USER");
 			User newAppUser = new User(username, encodedPassword, authorities);
 			userDetailsManager.createUser(newAppUser);
-			logger.info("Successfully Created New User: " + username);
+			logger.info("*** " + appUserMessage);
 			
 			return "confirmation";
 		}
@@ -72,7 +74,7 @@ public class RegisterController {
 	// Check the DB if the Application User already exists
 	public boolean isUserFoundInDatabase(String userName) {		
 		boolean isUserFound = userDetailsManager.userExists(userName);		
-		logger.info("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&" + userName + " Found: " + isUserFound);
+		logger.info("*** " + userName + " Found: " + isUserFound);
 		
 		return isUserFound;
 	}
