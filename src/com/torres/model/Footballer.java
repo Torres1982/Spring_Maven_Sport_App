@@ -13,6 +13,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import com.torres.util.Constants;
@@ -21,7 +22,8 @@ import com.torres.validation.FootballerCategory;
 @Component("footballer")
 @Entity
 @Table(name = "footballer")
-public class Footballer implements Serializable {
+@PropertySource("classpath:messages.properties")
+public class Footballer implements Serializable {	
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,19 +43,18 @@ public class Footballer implements Serializable {
 	@Size(min = 2, message = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_LENGTH)
 	@Column(name = "country")
 	private String country;
-	@NotNull(message = "Date Must Be Selected")
+	@NotNull(message = "{dob.selection}")
 	@Column(name = "date_of_birth")
 	private String dob;
-	@NotNull(message = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_NULL)
+	@NotNull(message = "{strength.selection}")
 	@Column(name = "strength")
 	private String strength;
-	@NotNull(message = "Formation Must Be Selected")
+	@NotNull(message = "{position.selection}")
 	@Column(name = "position")
 	private String position;
-	@NotNull(message = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_NULL)
-	//@NotNull(message = "{rating.notString}")
-	@Min(value = 0, message = "Must Be Greater Than or Equal To 0")
-	@Max(value = 100, message = "Must Be Less Than or Equal To 100")
+	@NotNull(message = "{rating.notnull}")
+	@Min(value = 0, message = "{rating.min.value}")
+	@Max(value = 100, message = "{rating.max.value}")
 	@Column(name = "rating")
 	private Integer rating;
 	@NotNull(message = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_NULL)

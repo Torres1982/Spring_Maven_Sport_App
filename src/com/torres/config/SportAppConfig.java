@@ -32,7 +32,7 @@ public class SportAppConfig implements WebMvcConfigurer {
    @Bean
    public MessageSource messageSource() {
       ReloadableResourceBundleMessageSource source = new ReloadableResourceBundleMessageSource();
-      source.setBasename("classpath:messages.properties");
+      source.setBasename("classpath:messages");
       source.setDefaultEncoding("UTF-8");
       return source;
    }
