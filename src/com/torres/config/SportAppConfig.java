@@ -6,7 +6,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+//import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.ViewResolver;
@@ -31,8 +32,10 @@ public class SportAppConfig implements WebMvcConfigurer {
 
    @Bean
    public MessageSource messageSource() {
-      ReloadableResourceBundleMessageSource source = new ReloadableResourceBundleMessageSource();
-      source.setBasename("classpath:messages");
+      //ReloadableResourceBundleMessageSource source = new ReloadableResourceBundleMessageSource();
+      //source.setBasename("classpath:messages");
+      ResourceBundleMessageSource source = new ResourceBundleMessageSource();
+      source.setBasenames("messages");
       source.setDefaultEncoding("UTF-8");
       return source;
    }

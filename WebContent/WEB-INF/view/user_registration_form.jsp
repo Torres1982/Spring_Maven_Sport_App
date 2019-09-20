@@ -42,6 +42,14 @@
 					</div>
 				</div>
 				
+				<div class="form-group row">
+					<div class="col-sm-7">
+						<form:select path="userRole" id="strength-height-fix" class="registration-input form-control">
+							<form:options items="${roleSelection}"/>
+						</form:select>
+					</div>
+				</div>
+				
 				<button type="submit" id="footballer-registration-button" class="btn btn-warning btn-sm">Register User</button>
 			</form:form>
 		

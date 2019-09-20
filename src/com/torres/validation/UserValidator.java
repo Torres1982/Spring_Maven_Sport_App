@@ -5,7 +5,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import com.torres.user.AppUser;
+import com.torres.model.AppUser;
 
 @Component
 public class UserValidator implements Validator {
@@ -18,10 +18,20 @@ public class UserValidator implements Validator {
 	public void validate(Object target, Errors errors) {
 		AppUser appUser = (AppUser) target;
 		
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userName", "NotEmpty");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userName", "appUser.userName.empty");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "appUser.password.empty");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userRole", "appUser.userRole.empty");
 		
-		if (appUser.getUserName().length() == 0) {
-			errors.rejectValue("userName", "Username cannot be Empty!");
+		if (appUser.getUserName().length() < 2) {
+			errors.rejectValue("userName", "User Name has to be Longer than 1 Character!");
+		}
+		
+		if (appUser.getPassword().length() < 4) {
+			errors.rejectValue("password", "Password has to be Longer than 3 Characters!");
+		}
+		
+		if (appUser.getUserRole() == null) {
+			errors.rejectValue("userRole", "User Role Has to be Selected!");
 		}
 	}
 }

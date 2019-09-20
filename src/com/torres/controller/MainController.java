@@ -124,7 +124,7 @@ public class MainController {
 		
 		// Populate Strength Options
 		strengthOptions = new LinkedHashMap<String, String>();
-		strengthOptions.put("", "Select Main Strength:");
+		strengthOptions.put("", "--- Select Main Strength ---");
 		
 		for (String strength : strengthsArray) {
 			strengthOptions.put(strength, strength);

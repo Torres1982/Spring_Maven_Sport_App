@@ -46,6 +46,16 @@
 					</div>
 				</div>
 			</div>
+			
+			<div class="form-group row">
+				<div class="col-sm-7 font_italic">
+					<div>
+						<security:authorize access="isAuthenticated()">
+							<security:authentication property="authorities"/>
+						</security:authorize>
+					</div>
+				</div>
+			</div>
 
 			<security:authorize access="hasRole('ADMIN')">
 				<div>

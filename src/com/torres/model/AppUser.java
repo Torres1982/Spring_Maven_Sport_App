@@ -1,9 +1,9 @@
-package com.torres.user;
+package com.torres.model;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
-import com.torres.util.Constants;
+//import javax.validation.constraints.NotNull;
+//import javax.validation.constraints.Size;
+//import org.springframework.stereotype.Component;
+//import com.torres.util.Constants;
 
 public class AppUser {
 	//@NotNull(message = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_NULL)
@@ -13,7 +13,7 @@ public class AppUser {
 	//@Size(min = 4, message = Constants.AppUserValidation.ERROR_APP_USER_REGISTRATION_FORM_LENGTH)
 	private String password;
 	//@NotNull(message = Constants.Validation.ERROR_FOOTBALLER_REGISTRATION_FORM_NULL)
-	private String role;
+	private String userRole;
 	
 	// Default Constructor
 	public AppUser() {}
@@ -28,6 +28,6 @@ public class AppUser {
 	public void setUserName(String username) {this.userName = username;}
 	public String getPassword() {return password;}
 	public void setPassword(String password) {this.password = password;}
-	public String getRole() {return role;}
-	public void setRole(String role) {this.role = role;}
+	public String getUserRole() {return userRole;}
+	public void setUserRole(String userRole) {this.userRole = userRole;}
 }
