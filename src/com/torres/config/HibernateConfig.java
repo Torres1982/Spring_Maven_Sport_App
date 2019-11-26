@@ -3,7 +3,7 @@ package com.torres.config;
 import java.beans.PropertyVetoException;
 import java.util.Properties;
 import org.apache.log4j.Logger;
-
+import java.lang.String;
 import javax.sql.DataSource;
 
 import org.hibernate.SessionFactory;

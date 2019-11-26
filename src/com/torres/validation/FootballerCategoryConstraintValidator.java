@@ -2,6 +2,7 @@ package com.torres.validation;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import java.lang.String;
 
 public class FootballerCategoryConstraintValidator implements ConstraintValidator<FootballerCategory, String> {
 	private String [] categoryPrefix;
