@@ -22,4 +22,9 @@ public class DateUtility {
     public static String convertDateToStringByDate(Date date) {           
     	return date != null ? formatter.format(date) : null;
     }
+    
+    // Capitalise the first Character of the given String
+    public static String capitaliseFirstCharacterOfString(String string) {
+    	return string.substring(0, 1).toUpperCase() + string.substring(1).toLowerCase();
+    }
 }

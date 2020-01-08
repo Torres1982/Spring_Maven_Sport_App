@@ -1,8 +1,8 @@
 package com.torres.controller;
 
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import org.apache.log4j.Logger;
@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.torres.model.Footballer;
 import com.torres.service.FootballerService;
+import com.torres.util.DateUtility;
 
 @Controller
 @RequestMapping("/main")
@@ -41,7 +42,14 @@ public class MainController {
 	
 	@RequestMapping({"/", "/home"})
 	public String showIndexPage(Model model) {
-		model.addAttribute("todayDate", new Date());
+		LocalDate date = LocalDate.now();
+		String dayOfWeek = DateUtility.capitaliseFirstCharacterOfString(date.getDayOfWeek().toString());
+		String month = DateUtility.capitaliseFirstCharacterOfString(date.getMonth().toString());
+		model.addAttribute("todayDate", date);
+		model.addAttribute("day", date.getDayOfMonth());
+		model.addAttribute("dayOfWeek", dayOfWeek);
+		model.addAttribute("month", month);
+		model.addAttribute("year", date.getYear());
 
 		return "home";
 	}

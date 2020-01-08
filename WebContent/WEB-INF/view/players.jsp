@@ -87,7 +87,7 @@
 			<a href="${pageContext.request.contextPath}/main/home" class="link-text">Home Page</a>
 			
 			<div class="text-center footer">
-				Artur Sukiennik | &copy;opyright | Wipro Limited | 2019
+				Artur Sukiennik | &copy; Copyright | Wipro Limited | 2019
 			</div>
 		</div>
 	</body>

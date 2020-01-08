@@ -19,7 +19,7 @@
 			
 			<div class="form-group row">
 				<div class="col-sm-7 font_italic">
-					${todayDate}
+					${day} ${month} ${year}, ${dayOfWeek}
 				</div>
 				
 				<div class="col-sm-5">
@@ -75,7 +75,7 @@
 			</div>
 			
 			<div id="footer" class="text-center">
-				Artur Sukiennik | &copy;opyright | Wipro Limited | 2019
+				Artur Sukiennik | &copy; Copyright | Wipro Limited | ${year}
 			</div>
 		</div>
 	</body>
