@@ -11,6 +11,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -100,6 +101,7 @@ public class MainController {
 		return "players";
 	}
 	
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/deletePlayer")
 	public String deleteFootballer(@RequestParam("footballerId") int id, Model model) {
 		model.addAttribute("deleteMessage", "Footballer with ID " + id + " Successfully Deleted");
